@@ -1,0 +1,9 @@
+/*Левая сторона общее*/
+.chat-list {
+  position: relative;
+  flex: 30%;
+  background: #FBFBFB;
+  border-right: 1px solid #EAEAEA;
+  height: 100vh;
+  overflow-y: scroll;
+}
