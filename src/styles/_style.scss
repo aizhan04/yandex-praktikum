@@ -5,10 +5,12 @@
 @import '/src/components/chatList/chatList';
 @import '/src/components/chatItem/chatItem';
 @import '/src/components/error/error';
-@import '/src/components/chat/chat';
+@import 'src/components/search/search';
+@import 'src/components/chat/chat';
 @import '/src/pages/login/login';
 @import '/src/pages/signIn/signIn';
 @import '/src/pages/list/list';
+@import '/src/pages/profile/profile';
 
 * {
   margin: 0;

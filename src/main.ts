@@ -3,22 +3,22 @@ import * as Components from './components';
 import * as Pages from './pages';
 
 
-
 const pages = {
-    'login': [ Pages.LoginPage,  ],
-    'list': [ Pages.ListPage ],
-    'signIn': [ Pages.SignInPage],
-    'error500': [ Pages.Error500Page],
-    'error404': [ Pages.Error404Page],
+    'login': [Pages.LoginPage,],
+    'list': [Pages.ListPage],
+    'signIn': [Pages.SignInPage],
+    'profile': [Pages.ProfilePage],
+    'error500': [Pages.Error500Page],
+    'error404': [Pages.Error404Page],
 };
 
-Object.entries(Components).forEach(([ name, component ]) => {
+Object.entries(Components).forEach(([name, component]) => {
     Handlebars.registerPartial(name, component);
 });
 
 function navigate(page: string) {
     //@ts-ignore
-    const [ source, context ] = pages[page];
+    const [source, context] = pages[page];
     const container = document.getElementById('app')!;
     container.innerHTML = Handlebars.compile(source)(context);
 }

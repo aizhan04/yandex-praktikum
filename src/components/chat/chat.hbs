@@ -1,4 +1,109 @@
 <!--Правая сторона-->
-<div class="chat-container">
-   asdasdkjaslkdjalsd
-</div>
+<main class="chat">
+    <div class="chat-header">
+        <div class="chat-header__user-info">
+            <!--            <img-->
+            <!--                    alt="skjk"-->
+            <!--                    src="http://localhost:3000/user.svg"-->
+            <!--            />-->
+            <p>image</p>
+            <p class="chat-header__user-name">Vadim</p>
+        </div>
+        <div class="chat-header__details">
+            {{> Dots}}
+        </div>
+    </div>
+
+    <!--    Сама переписка-->
+    <div class="test">
+        <div class="chat-content">
+            <div class="chat-content__income-message">
+                <p>Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент
+                    попросила
+                    Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с
+                    моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так
+                    как
+                    астронавты с собой забрали только кассеты с пленкой.</p>
+                <time datetime="11:56">11:56</time>
+            </div>
+
+            <div class="chat-content__my-message">
+                <p>
+                    Круто!
+                </p>
+                <div class="chat-content__read-message">
+                    {{> ReadMessage}}
+                    <time datetime="11:56">11:56</time>
+                </div>
+            </div>
+
+            <div class="chat-content__income-message">
+                <p>Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент
+                    попросила
+                    Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с
+                    моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так
+                    как
+                    астронавты с собой забрали только кассеты с пленкой.</p>
+                <time datetime="11:56">11:56</time>
+            </div>
+
+            <div class="chat-content__my-message">
+                <p>
+                    Круто!
+                </p>
+                <div class="chat-content__read-message">
+                    {{> ReadMessage}}
+                    <time datetime="11:56">11:56</time>
+                </div>
+            </div>
+
+            <div class="chat-content__income-message">
+                <p>Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент
+                    попросила
+                    Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с
+                    моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так
+                    как
+                    астронавты с собой забрали только кассеты с пленкой.</p>
+                <time datetime="11:56">11:56</time>
+            </div>
+
+            <div class="chat-content__my-message">
+                <p>
+                    Круто!
+                </p>
+                <div class="chat-content__read-message">
+                    {{> ReadMessage}}
+                    <time datetime="11:56">11:56</time>
+                </div>
+            </div>
+
+            <div class="chat-content__income-message">
+                <p>Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент
+                    попросила
+                    Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с
+                    моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так
+                    как
+                    астронавты с собой забрали только кассеты с пленкой.</p>
+                <time datetime="11:56">11:56</time>
+            </div>
+        </div>
+    </div>
+
+    <!--    Футер переписки-->
+    <div class="chat-bottom">
+        {{> AttachIcon }}
+        <div class="chat-bottom__send-message">
+            <label
+                    for="search"
+            >
+                <input
+                        type="text"
+                        placeholder="Message"
+                        id="search"
+                        class="chat-bottom__input"
+                >
+            </label>
+        </div>
+        {{> SendIcon}}
+    </div>
+</main>

@@ -8,7 +8,7 @@ Handlebars.registerHelper('chats', () => {
         {
             id: 1,
             name: "Андрей",
-            message: "Друзья, у меня для вас особенный выпуск новостей!!!Друзья, у меня для вас особенный выпуск новостей!!!",
+            message: "Друзья, у меня для вас особенный выпуск новос",
             user_avatar: user_avatar,
             unread_count: 2,
             time: "12:00",
@@ -52,7 +52,7 @@ Handlebars.registerHelper('chats', () => {
         {
             id: 6,
             name: "Андрей",
-            message: "Друзья, у меня для вас особенный выпуск новостей!!!",
+            message: "Друзья, у меня д",
             user_avatar: user_avatar,
             time: "12:00",
             sendMessage: false,

@@ -1,0 +1,26 @@
+.profile {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+
+  &__back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-width: 64px;
+    background-color: #FBFBFB;
+    border-right: 1px solid #EAEAEA;
+
+    &-icon {
+      cursor: pointer;
+    }
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+}
