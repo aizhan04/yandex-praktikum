@@ -10,12 +10,11 @@
         </div>
         <div class="profile__content-input">
             {{> ProfileInput
-                    name="email"
+                    name="Почта"
                     label="Email"
                     type="email"
                     env="profile"
                     placeholder="test@yandex.ru"
-                    disabled="true"
             }}
             {{> ProfileInput
                     name="login"
@@ -23,7 +22,6 @@
                     type="text"
                     env="profile"
                     placeholder="ivanivanov"
-                    disabled="true"
             }}
             {{> ProfileInput
                     name="first_name"
@@ -31,7 +29,6 @@
                     type="text"
                     env="profile"
                     placeholder="Ivan"
-                    disabled="true"
             }}
             {{> ProfileInput
                     name="second_name"
@@ -39,7 +36,6 @@
                     type="text"
                     env="profile"
                     placeholder="Ivanov"
-                    disabled="true"
             }}
             {{> ProfileInput
                     name="display_name"
@@ -47,19 +43,10 @@
                     type="text"
                     env="profile"
                     placeholder="Ivan"
-                    disabled="true"
             }}
         </div>
         <div class="profile__content-button">
-            <button class="profile__content-button__main">
-                Изменить данные
-            </button>
-            <button class="profile__content-button__main">
-                Изменить пароль
-            </button>
-            <button class="profile__content-button__delete">
-                Выйти
-            </button>
+            {{> Button label="Сохранить" type="primary" page=""}}
         </div>
     </div>
 </main>

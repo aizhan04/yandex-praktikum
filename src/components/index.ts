@@ -6,6 +6,8 @@ export {ChatItem} from './chatItem'
 export {ChatList} from './chatList'
 export {Chat} from './chat'
 export {Search} from './search'
+export {ProfileInput} from './profile-input'
+export {Avatar} from './avatar'
 
 //icons
 export {ArrowRight} from './icons/arrow'
@@ -14,3 +16,4 @@ export {ReadMessage} from './icons/read'
 export {AttachIcon} from './icons/attach'
 export {SendIcon} from './icons/send'
 export {BackArrow} from './icons/back'
+export {UserPhoto} from './icons/user'
