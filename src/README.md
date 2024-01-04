@@ -32,4 +32,3 @@ https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?node-id=12%
 
 `npm run build` - сборка проекта
 
-
