@@ -1,6 +1,6 @@
 ## Ссылка
 
-Ссылка на проект: https://preeminent-cobbler-7ae5f4.netlify.app
+Проект на Netlify: https://preeminent-cobbler-7ae5f4.netlify.app
 
 ## Описание проекта
 
