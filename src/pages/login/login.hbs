@@ -1,8 +1,8 @@
 <main class="container">
     {{#> FormAuth}}
         <h1>Вход</h1>
-        {{> Input label="Login" }}
-        {{> Input label="Password" type="password" }}
+        {{> Input label="Login" name="login"}}
+        {{> Input label="Password" type="password" name="password"}}
         {{> Button label="Sign in" type="primary" page="list"}}
         {{> Button label="Sign up" type="link" page="signIn" }}
         {{> Button label="Показать профиль" type="link" page="profile" }}
