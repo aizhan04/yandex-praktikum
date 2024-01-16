@@ -1,0 +1,35 @@
+@import '/src/components/input/input';
+@import '/src/components/button/button';
+@import '/src/components/form-auth/form-auth';
+@import '/src/components/input/input';
+@import '/src/components/chatList/chatList';
+@import '/src/components/chatItem/chatItem';
+@import '/src/components/error/error';
+@import 'src/components/search/search';
+@import 'src/components/chat/chat';
+@import 'src/components/profile-input/profile-input';
+@import 'src/components/avatar/avatar';
+@import '/src/pages/login/login';
+@import '/src/pages/signIn/signIn';
+@import '/src/pages/list/list';
+@import '/src/pages/profile/profile';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --main-color: #3369f3;
+  --second-color: #e4edfd;
+  --error-color: #ff2f2f;
+  --text-color: #1e1e1e;
+  --text-secondary-color: #999;
+}
+
+h1 {
+  color: var(--text-color);
+  font-size: 20px;
+  text-align: center;
+}
