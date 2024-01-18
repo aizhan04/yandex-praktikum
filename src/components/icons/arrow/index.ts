@@ -1,2 +1,1 @@
-export {default as ArrowRight} from './arrow.hbs?raw'
-
+export { default as ArrowRight } from "./arrow.hbs?raw";

@@ -1,38 +1,33 @@
-import Handlebars from 'handlebars';
-import * as Components from './components';
-import * as Pages from './pages';
+import Handlebars from "handlebars";
+import * as Components from "./components";
+import { registerComponent } from "./core/registerComponent";
+import { navigate } from "./core/navigate";
 
+// Object.entries(Components).forEach(([ name, component ]) => {
+//   if(['Input', 'Button'].includes(name)) {
+//     registerComponent(name, component);
+//     return;
+//   }
+//   Handlebars.registerPartial(name, component);
 
-const pages = {
-    'login': [Pages.LoginPage,],
-    'list': [Pages.ListPage],
-    'signIn': [Pages.SignInPage],
-    'profile': [Pages.ProfilePage],
-    'error500': [Pages.Error500Page],
-    'error404': [Pages.Error404Page],
-};
+// });
 
-Object.entries(Components).forEach(([name, component]) => {
-    Handlebars.registerPartial(name, component);
-});
+Handlebars.registerPartial("FormAuth", Components.FormAuth);
 
-function navigate(page: string) {
-    //@ts-ignore
-    const [source, context] = pages[page];
-    const container = document.getElementById('app')!;
-    container.innerHTML = Handlebars.compile(source)(context);
-}
+registerComponent("Button", Components.Button);
+registerComponent("Avatar", Components.Avatar);
+registerComponent("Chat", Components.Chat);
+registerComponent("ChatItem", Components.ChatItem);
+registerComponent("ChatList", Components.ChatList);
+registerComponent("Input", Components.Input);
+registerComponent("ProfileInput", Components.ProfileInput);
+registerComponent("Search", Components.Search);
+// registerComponent("Avatar", Components.Avatar);
+// registerComponent("Chat", Components.Chat);
+// registerComponent("ChatItem", Components.ChatItem);
+// registerComponent("ChatList", Components.ChatList);
+// registerComponent("Error", Components.Error);
+// registerComponent("Form-Auth", Components.FormAuth);
+// registerComponent("ProfileInput");
 
-document.addEventListener('DOMContentLoaded', () => navigate('login'));
-
-document.addEventListener('click', e => {
-    //@ts-ignore
-    const page = e.target.getAttribute('page');
-    if (page) {
-        navigate(page);
-
-        e.preventDefault();
-        e.stopImmediatePropagation();
-    }
-});
-
+document.addEventListener("DOMContentLoaded", () => navigate("login"));
