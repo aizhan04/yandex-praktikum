@@ -1,12 +1,12 @@
 import Block from "../../core/Block";
 import template from "./search.hbs?raw";
 
-interface IProps {
+interface Props {
   handleChatClick: () => void;
 }
 
-export class Search extends Block<IProps> {
-  constructor(props: IProps) {
+export class Search extends Block<Props> {
+  constructor(props: Props) {
     super({
       ...props,
     });

@@ -1,3 +1,4 @@
+// eslint-disable-next-line max-classes-per-file
 import { nanoid } from "nanoid";
 import Handlebars from "handlebars";
 import EventBus from "./EventBus";
@@ -47,11 +48,24 @@ class Block<Props extends object, Refs extends RefType = RefType> {
   }
 
   _addEvents() {
-    // @ts-ignore
-    const { events = {} } = this.props;
+    const { events = {} }: { events?: Events } = this.props;
+
+    if (!events) return;
 
     Object.keys(events).forEach((eventName) => {
+      // @ts-ignore
       this._element!.addEventListener(eventName, events[eventName]);
+    });
+  }
+
+  _removeEvents() {
+    const { events = {} }: { events?: Events } = this.props;
+
+    if (!events || !this._element) return;
+
+    Object.keys(events).forEach((eventName) => {
+      // @ts-ignore
+      this._element!.removeEventListener(eventName, events[eventName]);
     });
   }
 
@@ -134,6 +148,8 @@ class Block<Props extends object, Refs extends RefType = RefType> {
     const fragment = this.compile(this.render(), this.props);
 
     const newElement = fragment.firstElementChild as HTMLElement;
+
+    this._removeEvents();
 
     if (this._element) {
       this._element.replaceWith(newElement);

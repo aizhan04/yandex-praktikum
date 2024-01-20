@@ -1,2 +1,1 @@
-export {default as UserPhoto} from './user.hbs?raw'
-
+export { default as UserPhoto } from "./user.hbs?raw";

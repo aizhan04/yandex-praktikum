@@ -1,12 +1,11 @@
 import Block from "../../core/Block";
-import template from "./error.hbs?raw";
+import template from "./error-text.hbs?raw";
 
 interface Props {
-  title: string;
-  subtitle: string;
+  error?: string;
 }
 
-export class Error extends Block<Props> {
+export class ErrorText extends Block<Props> {
   constructor(props: Props) {
     super({
       ...props,

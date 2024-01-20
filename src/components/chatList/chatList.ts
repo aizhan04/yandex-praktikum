@@ -1,12 +1,12 @@
 import Block from "../../core/Block";
 import template from "./chatList.hbs?raw";
 
-interface IProps {
+interface Props {
   handleChatClick: () => void;
 }
 
-export class ChatList extends Block<IProps> {
-  constructor(props: IProps) {
+export class ChatList extends Block<Props> {
+  constructor(props: Props) {
     super({
       ...props,
     });
