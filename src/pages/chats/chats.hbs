@@ -4,10 +4,12 @@
     <div class="left">
         <div class="list-container__head">
             <div class="list-container__profile-block">
-                <button class="list-container__profile-button">
-                    <span>Профиль</span>
-                    {{> ArrowRight }}
-                </button>
+                {{{
+                    Button
+                        text="Перейти в Профиль"
+                        type=link
+                        onClick=handleProfileClick
+                }}}
             </div>
 
             <div>
