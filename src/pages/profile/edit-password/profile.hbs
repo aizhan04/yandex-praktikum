@@ -1,0 +1,38 @@
+<main class="profile">
+    <a class="profile__back" href="#">
+        <div class="profile__back-icon">
+            {{> BackArrow }}
+        </div>
+    </a>
+    <form class="profile__content">
+        <div>
+            {{> Avatar}}
+        </div>
+        <div class="profile__content-input">
+            {{> ProfileInput
+                    name="oldPassword"
+                    label="Старый пароль"
+                    type="password"
+                    env="profile"
+                    placeholder="oldPassword"
+            }}
+            {{> ProfileInput
+                    name="newPassword"
+                    label="Новый пароль"
+                    type="password"
+                    env="profile"
+                    placeholder="test"
+            }}
+            {{> ProfileInput
+                    name="first_name"
+                    label="Повторите новый пароль"
+                    type="password"
+                    env="profile"
+                    placeholder="test"
+            }}
+        </div>
+        <div class="profile__content-button">
+            {{> Button label="Сохранить" type="primary" page=""}}
+        </div>
+    </form>
+</main>
