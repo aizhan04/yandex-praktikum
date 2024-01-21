@@ -1,2 +1,1 @@
-export {default as Dots} from './dots.hbs?raw'
-
+export { default as Dots } from "./dots.hbs?raw";

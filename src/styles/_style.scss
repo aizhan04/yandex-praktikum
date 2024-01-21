@@ -1,17 +1,15 @@
-@import '/src/components/input/input';
 @import '/src/components/button/button';
 @import '/src/components/form-auth/form-auth';
-@import '/src/components/input/input';
 @import '/src/components/chatList/chatList';
 @import '/src/components/chatItem/chatItem';
 @import '/src/components/error/error';
 @import 'src/components/search/search';
 @import 'src/components/chat/chat';
-@import 'src/components/profile-input/profile-input';
+@import '/src/components/inputField/input-field';
 @import 'src/components/avatar/avatar';
 @import '/src/pages/login/login';
-@import '/src/pages/signIn/signIn';
-@import '/src/pages/list/list';
+@import '/src/pages/registration/registration';
+@import '/src/pages/chats/chats';
 @import '/src/pages/profile/profile';
 
 * {
