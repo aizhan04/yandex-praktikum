@@ -1,18 +1,20 @@
 import Block, { Events } from "../../core/Block";
-import template from "./input.hbs?raw";
+import templateInputProfile from "./profile-input.hbs?raw";
+import templateInputSignIn from "./input-signIn.hbs?raw";
+import templateInputChat from "./input-chat.hbs?raw";
 
-interface IProps {
+interface Props {
   type: "email" | "password" | "text";
   name: string;
   label: string;
-  // env: "auth" | "profile" | "chat";
+  env: "registration" | "profile" | "chat";
   placeholder?: string;
   onBlur: () => void;
   events: Events;
 }
 
-export class Input extends Block<IProps> {
-  constructor(props: IProps) {
+export class Input extends Block<Props> {
+  constructor(props: Props) {
     super({
       ...props,
       events: {
@@ -22,6 +24,14 @@ export class Input extends Block<IProps> {
   }
 
   protected render(): string {
-    return template;
+    if (this.props.env === "profile") {
+      return templateInputProfile;
+    }
+
+    if (this.props.env === "registration") {
+      return templateInputSignIn;
+    }
+
+    return templateInputChat;
   }
 }

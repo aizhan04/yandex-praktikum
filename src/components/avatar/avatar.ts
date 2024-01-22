@@ -1,9 +1,9 @@
 import Block from "../../core/Block";
 import template from "./avatar.hbs?raw";
 
-interface IProps {}
+interface Props {}
 
-export class Avatar extends Block<IProps> {
+export class Avatar extends Block<Props> {
   protected render(): string {
     return template;
   }

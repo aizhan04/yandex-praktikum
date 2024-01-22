@@ -1,0 +1,22 @@
+<div class="field-profile">
+    <label
+            class="field-profile__label"
+            for={{ name }}
+    >
+        {{ label }}
+    </label>
+    {{{
+      Input
+            type=type
+            name=name
+            placeholder=placeholder
+            disabled=disabled
+            env=env
+            onBlur=onBlur
+            ref="input"
+     }}}
+</div>
+{{{ ErrorText error=error ref="errorText" }}}
+
+
+
