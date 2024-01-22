@@ -100,14 +100,14 @@ class Block<Props extends object, Refs extends RefType = RefType> {
     );
   }
 
-  private _componentDidUpdate(oldProps: any, newProps: any) {
+  private _componentDidUpdate(oldProps: Props, newProps: Props) {
     if (this.componentDidUpdate(oldProps, newProps)) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
   }
 
   // @ts-ignore
-  protected componentDidUpdate(oldProps: any, newProps: any) {
+  protected componentDidUpdate(oldProps: Props, newProps: Props) {
     return true;
   }
 
@@ -132,7 +132,7 @@ class Block<Props extends object, Refs extends RefType = RefType> {
 
   componentWillUnmount() {}
 
-  setProps = (nextProps: any) => {
+  setProps = (nextProps: Props) => {
     if (!nextProps) {
       return;
     }
