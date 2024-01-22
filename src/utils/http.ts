@@ -26,17 +26,19 @@ const queryStringify = (data: Record<string, string>) => {
   );
 };
 
+type THTTPMethod = (url: string, options?: TOptions) => Promise<unknown>;
+
 export default class HTTPTransport {
-  get = (url: string, options: TOptions = {}) =>
+  get: THTTPMethod = (url, options = {}) =>
     this.request(url, { ...options, method: METHODS.GET }, options.timeout);
 
-  post = (url: string, options: TOptions = {}) =>
+  post: THTTPMethod = (url, options = {}) =>
     this.request(url, { ...options, method: METHODS.POST }, options.timeout);
 
-  put = (url: string, options: TOptions = {}) =>
+  put: THTTPMethod = (url, options = {}) =>
     this.request(url, { ...options, method: METHODS.PUT }, options.timeout);
 
-  delete = (url: string, options: TOptions = {}) =>
+  delete: THTTPMethod = (url, options = {}) =>
     this.request(url, { ...options, method: METHODS.DELETE }, options.timeout);
 
   request = (url: string, options: TOptions = {}, timeout = 5000) => {
