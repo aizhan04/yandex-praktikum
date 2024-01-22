@@ -31,9 +31,7 @@ export class LoginPage extends Block<IProps, TRef> {
       },
       handleRegister: (event: Event) => {
         event.preventDefault();
-        console.log("hskdfhskdjf");
         navigate(PAGES.REGISTRATION_PAGE);
-        console.log("22222");
       },
     });
   }

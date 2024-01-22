@@ -20,5 +20,6 @@ registerComponent("Search", Components.Search);
 registerComponent("Error", Components.Error);
 registerComponent("ErrorText", Components.ErrorText);
 registerComponent("InputField", Components.InputField);
+registerComponent("Back", Components.Back);
 
 document.addEventListener("DOMContentLoaded", () => navigate(PAGES.LOGIN));

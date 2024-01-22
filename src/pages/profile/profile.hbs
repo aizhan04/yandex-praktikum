@@ -1,15 +1,5 @@
 <main class="profile">
-    <a class="profile__back" href="#">
-        <div class="profile__back-icon">
-            {{{
-            Button
-                    text="Назад"
-                    type=link
-                    onClick=handleBackClick
-            }}}
-            {{> BackArrow }}
-        </div>
-    </a>
+   {{{ Back onClick=handleBackClick }}}
     <form class="profile__content">
         <div>
             {{{ Avatar }}}
@@ -23,6 +13,7 @@
                     env="profile"
                     placeholder="test@yandex.ru"
                     ref="email"
+                    disabled="true"
             }}}
 
             {{{

@@ -30,6 +30,8 @@ export class EditProfilePage extends Block<IProps, TRef> {
         navigate(PAGES.PROFILE_PAGE);
       },
       handleSaveChangesClick: (event: Event) => {
+        console.log("hsdfjkds");
+
         event.preventDefault();
         // eslint-disable-next-line @typescript-eslint/naming-convention,camelcase
         const first_name = this.refs.first_name.value();
@@ -52,6 +54,7 @@ export class EditProfilePage extends Block<IProps, TRef> {
           !phone
         )
           return;
+        console.log("hsdfjkds");
         console.log({
           // eslint-disable-next-line camelcase
           first_name,
