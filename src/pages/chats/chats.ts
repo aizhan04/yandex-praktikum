@@ -1,7 +1,6 @@
 import Block from "../../core/Block";
 import { PAGES, navigate } from "../../core/navigate";
 import template from "./chats.hbs?raw";
-// @ts-ignore
 import userAvatar from "../../assets/user.svg";
 import * as validators from "../../utils/validate";
 import { InputField } from "../../components";
