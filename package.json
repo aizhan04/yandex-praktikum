@@ -1,5 +1,5 @@
 {
-  "name": "yandex-praktikum-messenger",
+  "name": "yandex-praktikum-sprint-1",
   "version": "0.0.0",
   "type": "module",
   "engines": {
@@ -9,34 +9,16 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "start": "tsc --noEmit && vite build && node src/server/index.cjs",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx src/",
-    "fix-lint": "eslint --ext .ts,.tsx src --fix"
+    "start": "tsc && vite build && node src/server/index.cjs"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.19.0",
-    "@typescript-eslint/parser": "^6.19.0",
-    "eslint": "^8.56.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-airbnb-typescript": "^17.1.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-config-standard-with-typescript": "^43.0.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-n": "^16.6.2",
-    "eslint-plugin-prettier": "^5.1.3",
-    "eslint-plugin-promise": "^6.1.1",
     "sass": "^1.69.5",
-    "stylelint": "^16.1.0",
-    "stylelint-config-standard-scss": "13.0.0",
-    "typescript": "^5.3.3",
+    "typescript": "^5.2.2",
     "vite": "^5.0.8",
-    "vite-plugin-checker": "0.6.2",
     "vite-plugin-handlebars": "^1.6.0"
   },
   "dependencies": {
     "express": "^4.18.2",
-    "handlebars": "^4.7.8",
-    "nanoid": "^5.0.4"
+    "handlebars": "^4.7.8"
   }
 }
