@@ -57,14 +57,21 @@ export const email = (value: string) => {
 };
 
 export const password = (value: string) => {
-  const regex = /^(?=.*[A-Z])(?=.*\d).{8,40}$/;
-
-  if (value.length === 0) {
-    return "Field can not be empty";
+  // Check if the password is not from 8 to 40 characters long
+  if (value.length < 8 || value.length > 40) {
+    return "Password must be from 8 to 40 characters long";
   }
 
-  if (!regex.test(value)) {
-    return "Invalid password format";
+  // Check if password contains at least one uppercase letter
+  const uppercasePattern = /[A-Z]/;
+  if (!uppercasePattern.test(value)) {
+    return "Password must contain at least one uppercase letter";
+  }
+
+  // Check if password contains at least one digit
+  const digitPattern = /\d/;
+  if (!digitPattern.test(value)) {
+    return "Password must contain at least one digit";
   }
 
   return false;
