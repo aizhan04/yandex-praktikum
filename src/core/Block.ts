@@ -132,7 +132,7 @@ class Block<Props extends object, Refs extends RefType = RefType> {
 
   componentWillUnmount() {}
 
-  setProps = (nextProps: Props) => {
+  setProps = (nextProps: any) => {
     if (!nextProps) {
       return;
     }
