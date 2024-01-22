@@ -1,20 +1,20 @@
 import Block, { Events } from "../../core/Block";
 import template from "./chatItem.hbs?raw";
 
-interface Props {
+interface IProps {
   name: string;
   message: string;
   time: string;
-  unreadCount?: number;
+  unread_count?: number;
   sendMessage: boolean;
   isActiveChat?: boolean;
-  userAvatar: string;
+  user_avatar: string;
   onClick?: () => void;
   events?: Events;
 }
 
-export class ChatItem extends Block<Props> {
-  constructor(props: Props) {
+export class ChatItem extends Block<IProps> {
+  constructor(props: IProps) {
     super({
       ...props,
     });

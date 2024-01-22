@@ -9,79 +9,44 @@
             {{> Avatar}}
         </div>
         <div class="profile__content-input">
-            {{{
-             InputField
+            {{> ProfileInput
                     name="email"
                     label="Email"
                     type="email"
                     env="profile"
                     placeholder="test@yandex.ru"
-                    ref="email"
-                    validate=validate.email
-            }}}
-
-            {{{
-            InputField
+            }}
+            {{> ProfileInput
                     name="login"
                     label="Login"
                     type="text"
                     env="profile"
                     placeholder="ivanivanov"
-                    ref="login"
-                    validate=validate.login
-            }}}
-
-            {{{
-            InputField
+            }}
+            {{> ProfileInput
                     name="first_name"
                     label="First Name"
                     type="text"
                     env="profile"
                     placeholder="Ivan"
-                    ref="first_name"
-                    validate=validate.first_name
-            }}}
-
-            {{{
-            InputField
+            }}
+            {{> ProfileInput
                     name="second_name"
                     label="Second Name"
                     type="text"
                     env="profile"
                     placeholder="Ivanov"
-                    ref="second_name"
-                    validate=validate.second_name
-            }}}
-
-            {{{
-            InputField
+            }}
+            {{> ProfileInput
                     name="display_name"
                     label="Display Name"
                     type="text"
                     env="profile"
                     placeholder="Ivan"
-                    ref="display_name"
-                    validate=validate.display_name
-            }}}
-
-            {{{
-            InputField
-                    name="phone"
-                    label="Phone Number"
-                    type="text"
-                    env="profile"
-                    placeholder="+7(909)9673030"
-                    ref="phone"
-                    validate=validate.phone
-            }}}
+            }}
         </div>
         <div class="profile__content-button">
-            {{{
-            Button
-                    text="Сохранить"
-                    type="primary"
-                    onClick=handleSaveChangesClick
-            }}}
+            {{> Button label="Сохранить" type="primary" page=""}}
         </div>
     </form>
 </main>

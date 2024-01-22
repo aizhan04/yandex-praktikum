@@ -9,45 +9,30 @@
             {{> Avatar}}
         </div>
         <div class="profile__content-input">
-            {{{
-                InputField
+            {{> ProfileInput
                     name="oldPassword"
                     label="Старый пароль"
                     type="password"
                     env="profile"
-                    ref="oldPassword"
-                    placeholder="Password"
-                    validate=validate.oldPassword
-            }}}
-
-            {{{
-                InputField
+                    placeholder="oldPassword"
+            }}
+            {{> ProfileInput
                     name="newPassword"
                     label="Новый пароль"
                     type="password"
                     env="profile"
-                    placeholder="Password"
-                    ref="newPassword"
-                    validate=validate.newPassword
-            }}}
-
-            {{{
-                InputField
-                    name="repeatNewPassword"
+                    placeholder="test"
+            }}
+            {{> ProfileInput
+                    name="first_name"
                     label="Повторите новый пароль"
                     type="password"
                     env="profile"
-                    placeholder="Password"
-                    ref="repeatNewPassword"
-                    validate=validate.repeatNewPassword
-            }}}
+                    placeholder="test"
+            }}
         </div>
         <div class="profile__content-button">
-            {{{
-                Button
-                    text="Сохранить"
-                    onClick=handleSaveChangesClick
-            }}}
+            {{> Button label="Сохранить" type="primary" page=""}}
         </div>
     </form>
 </main>
