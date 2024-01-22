@@ -11,16 +11,16 @@
             </div>
 
             <div>
-                {{{ Search }}}
+                {{> Search }}
             </div>
         </div>
         <!--Список чатов-->
         <nav>
-            {{#ChatList chats=chats handleChatClick=handleChatClick}}{{/ChatList}}
+            {{> ChatList}}
         </nav>
     </div>
     <!--Правая сторона-->
     <div class="right">
-        {{{ Chat }}}
+        {{> Chat}}
     </div>
 </main>

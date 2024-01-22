@@ -3,7 +3,7 @@
     {{#if isActiveChat}} list-item__active {{/ if}}
 ">
     <div class="list-item__image">
-        <img src={{userAvatar}}
+        <img src={{user_avatar}}
              alt="Аватар"
              width="47px"
              height="47px">
@@ -19,8 +19,8 @@
             {{else }}
                 <p>{{message}}</p>
             {{/if}}
-            {{#if unreadCount}}
-                <div class="list-item__unread-count">{{unreadCount}}</div>
+            {{#if unread_count}}
+                <div class="list-item__unread-count">{{unread_count}}</div>
             {{/if}}
         </div>
     </div>
