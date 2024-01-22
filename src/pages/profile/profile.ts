@@ -7,11 +7,11 @@ interface IProps {}
 export class ProfilePage extends Block<IProps> {
   constructor() {
     super({
-      handleEditProfile: (event: Event) => {
+      handleChangeProfile: (event: Event) => {
         event.preventDefault();
         navigate(PAGES.EDIT_PROFILE);
       },
-      handleEditPassword: (event: Event) => {
+      handleChangePassword: (event: Event) => {
         event.preventDefault();
         navigate(PAGES.EDIT_PASSWORD);
       },
