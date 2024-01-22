@@ -1,18 +1,12 @@
 <main class="profile">
     <a class="profile__back" href="#">
         <div class="profile__back-icon">
-            {{{
-            Button
-                    text="Назад"
-                    type=link
-                    onClick=handleBackClick
-            }}}
             {{> BackArrow }}
         </div>
     </a>
     <form class="profile__content">
         <div>
-            {{{ Avatar }}}
+            {{> Avatar}}
         </div>
         <div class="profile__content-input">
             {{{
@@ -83,7 +77,7 @@
             Button
                     text="Изменить данные"
                     env="profile"
-                    onClick=handleEditProfile
+                    onClick=handleChangeProfile
             }}}
 <!--            <button class="profile__content-button__main">-->
 <!--                Изменить пароль-->
@@ -93,7 +87,7 @@
             Button
                     text="Изменить пароль"
                     env="profile"
-                    onClick=handleEditPassword
+                    onClick=handleChangePassword
             }}}
 <!--            <button class="profile__content-button__delete">-->
 <!--                Выйти-->
