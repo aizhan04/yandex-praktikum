@@ -1,38 +1,25 @@
-import Handlebars from 'handlebars';
-import * as Components from './components';
-import * as Pages from './pages';
+import Handlebars from "handlebars";
+import * as Icons from "./components/icons";
+import * as Components from "./components";
+import { registerComponent } from "./core/registerComponent";
+import { PAGES, navigate } from "./core/navigate";
 
-
-const pages = {
-    'login': [Pages.LoginPage,],
-    'list': [Pages.ListPage],
-    'signIn': [Pages.SignInPage],
-    'profile': [Pages.ProfilePage],
-    'error500': [Pages.Error500Page],
-    'error404': [Pages.Error404Page],
-};
-
-Object.entries(Components).forEach(([name, component]) => {
-    Handlebars.registerPartial(name, component);
+Object.entries(Icons).forEach(([name, icon]) => {
+  Handlebars.registerPartial(name, icon);
 });
 
-function navigate(page: string) {
-    //@ts-ignore
-    const [source, context] = pages[page];
-    const container = document.getElementById('app')!;
-    container.innerHTML = Handlebars.compile(source)(context);
-}
+Handlebars.registerPartial("FormAuth", Components.FormAuth);
 
-document.addEventListener('DOMContentLoaded', () => navigate('login'));
+registerComponent("Button", Components.Button);
+registerComponent("Avatar", Components.Avatar);
+registerComponent("Chat", Components.Chat);
+registerComponent("ChatItem", Components.ChatItem);
+registerComponent("ChatList", Components.ChatList);
+registerComponent("Input", Components.Input);
+registerComponent("Search", Components.Search);
+registerComponent("Error", Components.Error);
+registerComponent("ErrorText", Components.ErrorText);
+registerComponent("InputField", Components.InputField);
+registerComponent("Back", Components.Back);
 
-document.addEventListener('click', e => {
-    //@ts-ignore
-    const page = e.target.getAttribute('page');
-    if (page) {
-        navigate(page);
-
-        e.preventDefault();
-        e.stopImmediatePropagation();
-    }
-});
-
+document.addEventListener("DOMContentLoaded", () => navigate(PAGES.LOGIN));

@@ -1,7 +1,16 @@
 <!--Левая сторона общее-->
 <ul class="chat-list">
-    {{#each (chats) }}
-        {{> ChatItem }}
+    {{#each chats }}
+        {{{ ChatItem
+                name=this.name
+                message=this.message
+                time=this.time
+                unreadCount=this.unreadCount
+                isActiveChat=this.isActiveChat
+                sendMessage=this.sendMessage
+                userAvatar=this.userAvatar
+                onClick=../handleChatClick
+        }}}
     {{/each}}
 </ul>
 

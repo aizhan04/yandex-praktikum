@@ -1,14 +1,45 @@
 <main class="container">
     {{#> FormAuth}}
         <h1>Вход</h1>
-        {{> Input label="Login" name="login"}}
-        {{> Input label="Password" type="password" name="password"}}
-        {{> Button label="Sign in" type="primary" page="list"}}
-        {{> Button label="Sign up" type="link" page="signIn" }}
-        {{> Button label="Показать профиль" type="link" page="profile" }}
-        {{> Button label="Показать ошибку 500" type="link" page="error500" }}
-        {{> Button label="Показать ошибку 404" type="link" page="error404" }}
+
+       <div>
+           {{{
+           InputField
+                   name="login"
+                   label="Логин"
+                   id="login"
+                   type="text"
+                   env="registration"
+                   ref="login"
+                   validate=validate.login
+           }}}
+
+           {{{
+           InputField
+                   name="password"
+                   label="Пароль"
+                   type="password"
+                   env="registration"
+                   ref="password"
+                   validate=validate.password
+           }}}
+       </div>
+
+        <div class="button-block">
+            {{{
+            Button
+                    text="Авторизоваться"
+                    type="primary"
+                    onClick=handleLogin
+            }}}
+
+            {{{
+            Button
+                    text="Регистрация"
+                    type="link"
+                    onClick=handleRegister
+            }}}
+        </div>
     {{/FormAuth}}
 </main>
 
- 

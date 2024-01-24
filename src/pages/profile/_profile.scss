@@ -11,6 +11,11 @@
     min-width: 64px;
     background-color: #FBFBFB;
     border-right: 1px solid #EAEAEA;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+      background-color: #e1e0e0;
+    }
 
     &-icon {
       cursor: pointer;
@@ -47,11 +52,12 @@
 
       button {
         display: flex;
+        justify-content: center;
+        align-items: center;
         border: none;
         width: 100%;
         font-size: 13px;
         padding-bottom: 10px;
-        background-color: transparent;
         cursor: pointer;
         border-bottom: 1px solid #EAEAEA;
       }
