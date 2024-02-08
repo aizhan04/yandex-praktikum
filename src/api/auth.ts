@@ -1,4 +1,4 @@
-import HTTPTransport from "../utils/http";
+import HTTPTransport from "../utils/httpTransport.ts";
 import {
   APIError,
   CreateUser,
@@ -7,30 +7,22 @@ import {
   UserDTO,
 } from "./type";
 
-enum AUTH {
-  BASE = "/auth",
-  SIGNUP = "/signup",
-  SIGNIN = "/signin",
-  USER = "/user",
-  LOGOUT = "/logout",
-}
-
-const authApi = new HTTPTransport(AUTH.BASE);
+const authApi = new HTTPTransport("/auth");
 
 export default class AuthApi {
   async create(data: CreateUser): Promise<SignUpResponse> {
-    return authApi.post(AUTH.SIGNUP, { data });
+    return authApi.post("/signup", { data });
   }
 
   async login(data: LoginRequestData): Promise<void | APIError> {
-    return authApi.post(AUTH.SIGNIN, { data });
+    return authApi.post("signin", { data });
   }
 
   async me(): Promise<UserDTO | APIError> {
-    return authApi.get(AUTH.USER);
+    return authApi.get("/user");
   }
 
   async logout(): Promise<void | APIError> {
-    return authApi.post(AUTH.LOGOUT);
+    return authApi.post("/logout");
   }
 }

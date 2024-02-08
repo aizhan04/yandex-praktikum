@@ -1,11 +1,7 @@
-import HTTPTransport from "../utils/http";
+import HTTPTransport from "../utils/httpTransport";
 import { APIError, ChatDTO, CreateChat } from "./type";
 
-enum CHAT {
-  BASE = "/chats",
-}
-
-const chatApi = new HTTPTransport(CHAT.BASE);
+const chatApi = new HTTPTransport("/chats");
 
 export default class ChatApi {
   async create(data: CreateChat): Promise<void | APIError> {

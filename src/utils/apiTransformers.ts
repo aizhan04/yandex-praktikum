@@ -1,6 +1,6 @@
-import { ChatDTO, ChatUserDTO, UserDTO } from "../api/type.ts";
+import { ChatDTO, ChatUserDTO, UserDTO } from "../api/type";
 import constants from "../constants";
-import { Chat, ChatUser, User } from "../type.ts";
+import { Chat, ChatUser, User } from "../type";
 
 const buildPathToResource = (resource: string | null) => {
   if (!resource) {
