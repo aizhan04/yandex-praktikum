@@ -1,7 +1,7 @@
 import Block, { RefType } from "../core/Block";
 import { StoreEvents } from "../core/Store";
 import { AppState } from "../type";
-import { isEqual } from "./isEqual";
+import isEqual from "./isEqual.ts";
 
 export function connect(
   mapStateToProps: (state: AppState) => Partial<AppState>,
