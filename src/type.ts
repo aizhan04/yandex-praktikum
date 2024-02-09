@@ -60,6 +60,6 @@ export type Chat = {
 
 type LastMessage = {
   user: User;
-  time: Date;
+  time: Date | string;
   content: string;
 };

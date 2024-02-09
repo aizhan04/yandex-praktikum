@@ -1,5 +1,5 @@
 import { ChatDTO, ChatUserDTO, UserDTO } from "../api/type";
-import constants from "../constants";
+import { BASE_URL } from "../api/base-url";
 import { Chat, ChatUser, User } from "../type";
 
 const buildPathToResource = (resource: string | null) => {
@@ -7,7 +7,7 @@ const buildPathToResource = (resource: string | null) => {
     return null;
   }
 
-  return `${constants.HOST}/resources/${resource}`;
+  return `${BASE_URL}/resources/${resource}`;
 };
 
 export const transformUser = (data: UserDTO): User => ({
