@@ -2,24 +2,45 @@ import Handlebars from "handlebars";
 import * as Icons from "./components/icons";
 import * as Components from "./components";
 import { registerComponent } from "./core/registerComponent";
-import { PAGES, navigate } from "./core/navigate";
+import { initApp } from "./services/initApp";
+import { router } from "./core/Router";
+import Block from "./core/Block";
+import { Store } from "./core/Store";
+import { AppState } from "./type";
 
+// Register icons
 Object.entries(Icons).forEach(([name, icon]) => {
   Handlebars.registerPartial(name, icon);
 });
 
-Handlebars.registerPartial("FormAuth", Components.FormAuth);
+// Register components
+Object.entries(Components).forEach(([componentName, component]) => {
+  registerComponent(componentName, component as typeof Block);
+});
 
-registerComponent("Button", Components.Button);
-registerComponent("Avatar", Components.Avatar);
-registerComponent("Chat", Components.Chat);
-registerComponent("ChatItem", Components.ChatItem);
-registerComponent("ChatList", Components.ChatList);
-registerComponent("Input", Components.Input);
-registerComponent("Search", Components.Search);
-registerComponent("Error", Components.Error);
-registerComponent("ErrorText", Components.ErrorText);
-registerComponent("InputField", Components.InputField);
-registerComponent("Back", Components.Back);
+declare global {
+  interface Window {
+    store: Store<AppState>;
+  }
 
-document.addEventListener("DOMContentLoaded", () => navigate(PAGES.LOGIN));
+  type Nullable<T> = T | null;
+}
+
+const initState: AppState = {
+  error: null,
+  user: null,
+  isOpenDialogChat: false,
+  // isOpenDialogUsers: false,
+  // isOpenDialogDeleteUsers: false,
+  // isOpenDialogChatOptions: false,
+  chats: [],
+  // activeChat: null,
+  // usersSearched: null,
+  // socket: null,
+};
+
+window.store = new Store<AppState>(initState);
+
+router.start();
+
+document.addEventListener("DOMContentLoaded", () => initApp());

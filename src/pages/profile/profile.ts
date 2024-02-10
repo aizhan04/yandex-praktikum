@@ -1,6 +1,7 @@
 import Block from "../../core/Block";
-import { PAGES, navigate } from "../../core/navigate";
+import { PAGES, router } from "../../core/Router";
 import template from "./profile.hbs?raw";
+import { logout } from "../../services/auth";
 
 interface IProps {}
 
@@ -9,18 +10,23 @@ export class ProfilePage extends Block<IProps> {
     super({
       handleEditProfile: (event: Event) => {
         event.preventDefault();
-        navigate(PAGES.EDIT_PROFILE);
+        router.go(PAGES.EDIT_PROFILE);
       },
       handleEditPassword: (event: Event) => {
         event.preventDefault();
-        navigate(PAGES.EDIT_PASSWORD);
+        router.go(PAGES.EDIT_PASSWORD);
       },
-      handleLogout: (event: Event) => {
+      handleLogout: async (event: Event) => {
         event.preventDefault();
-        navigate(PAGES.LOGIN);
+        try {
+          await logout();
+          router.go(PAGES.LOGIN);
+        } catch (error) {
+          console.log(error);
+        }
       },
       handleBackClick: () => {
-        navigate(PAGES.CHATS);
+        router.back();
       },
     });
   }

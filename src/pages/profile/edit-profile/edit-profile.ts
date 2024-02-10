@@ -1,6 +1,6 @@
 import { InputField } from "../../../components";
 import Block from "../../../core/Block";
-import { PAGES, navigate } from "../../../core/navigate";
+import { PAGES, router } from "../../../core/Router";
 import template from "./edit-profile.hbs?raw";
 import * as validators from "../../../utils/validate";
 
@@ -27,11 +27,9 @@ export class EditProfilePage extends Block<IProps, TRef> {
         phone: validators.phone,
       },
       handleBackClick: () => {
-        navigate(PAGES.PROFILE_PAGE);
+        router.go(PAGES.PROFILE);
       },
       handleSaveChangesClick: (event: Event) => {
-        console.log("hsdfjkds");
-
         event.preventDefault();
         // eslint-disable-next-line @typescript-eslint/naming-convention,camelcase
         const first_name = this.refs.first_name.value();

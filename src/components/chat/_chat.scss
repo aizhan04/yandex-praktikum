@@ -1,6 +1,9 @@
 /*правая сторона*/
 .chat {
-  height: calc(100vh - 60px);
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 .chat-header {
@@ -8,9 +11,10 @@
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid #EAEAEA;
-  padding-bottom: 10px;
+  padding: 0 20px;
 
   &__user-info {
+    height: 60px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -25,9 +29,9 @@
   display: flex;
   flex-direction: column;
   row-gap: 21px;
-  padding: 20px 0;
-  overflow: scroll;
-  min-height: calc(100% - 60px);
+  padding: 20px;
+  overflow-y: scroll;
+  min-height: calc(100% - 60px - 60px);
 
   &__income-message {
     border-radius: 8px;
@@ -74,7 +78,7 @@
   display: flex;
   gap: 10px;
   align-items: center;
-  padding: 11px 0;
+  padding: 11px 20px;
   border-top: 1px solid #EAEAEA;
   z-index: 2;
 

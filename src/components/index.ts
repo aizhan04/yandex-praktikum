@@ -1,8 +1,8 @@
 export { Button } from "./button/button";
 export { Input } from "./input/input";
-export { FormAuth } from "./form-auth";
 export { Back } from "./back/back";
 export { Error } from "./error/error";
+export { FormAuth } from "./form-auth/form";
 export { ErrorText } from "./errorText/error-text";
 export { ChatItem } from "./chatItem/chatItem";
 export { ChatList } from "./chatList/chatList";

@@ -3,13 +3,13 @@ const namesValidators = (value: string) => {
   const cyrillicPattern = /^[а-яА-ЯёЁ\s]+$/;
   const latinPattern = /^[a-zA-Z\s]+$/;
   if (!cyrillicPattern.test(value) && !latinPattern.test(value)) {
-    return "First name must contain only Cyrillic or Latin characters";
+    return "Имя должно содержать только символы кириллицы или латиницы";
   }
 
   // Check if first letter is not a capital letter
   const firstLetterNotCapitalPattern = /^[^A-ZА-ЯЁ]/;
   if (firstLetterNotCapitalPattern.test(value)) {
-    return "First letter must be a capital letter";
+    return "Первая буква должна быть заглавной";
   }
 
   return false;
@@ -25,25 +25,25 @@ export const second_name = (value: string) => namesValidators(value);
 export const login = (value: string) => {
   // Check if the login is not from 3 to 20 characters long
   if (value.length < 3 || value.length > 20) {
-    return "Login must be from 3 to 20 characters long";
+    return "Длина логина должна быть от 3 до 20";
   }
 
   // Check if login contains any spaces
   const spacesPattern = /\s/;
   if (spacesPattern.test(value)) {
-    return "Login must not contain any spaces";
+    return "Не должно быть пробелов";
   }
 
   // Check if login contains any special signs other than dash and underline
   const specialSignsPattern = /[^a-zA-Z0-9-_]/;
   if (specialSignsPattern.test(value)) {
-    return "Login must not contain any special signs other than dash and underline";
+    return "Не должен содержать кроме нижнего подчеркивания и тире";
   }
 
   // Check if login is not all numbers and contains only Latin characters, numbers, dashes, and underscores
   const latinWithNumbersPattern = /^(?=.*[a-zA-Z])[a-zA-Z0-9-_]+$/;
   if (!latinWithNumbersPattern.test(value)) {
-    return "Login must have Latin characters and can contain numbers, dashes, and underscores";
+    return "Должен содержать латинские буквы";
   }
 };
 
@@ -51,7 +51,7 @@ export const email = (value: string) => {
   // Check if email is valid
   const emailPattern = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i;
   if (!emailPattern.test(value)) {
-    return "Enter valid email address";
+    return "Введите валидную почту";
   }
   return false;
 };
@@ -59,19 +59,19 @@ export const email = (value: string) => {
 export const password = (value: string) => {
   // Check if the password is not from 8 to 40 characters long
   if (value.length < 8 || value.length > 40) {
-    return "Password must be from 8 to 40 characters long";
+    return "Длина пароля должна быть от 8 до 40 символов";
   }
 
   // Check if password contains at least one uppercase letter
   const uppercasePattern = /[A-Z]/;
   if (!uppercasePattern.test(value)) {
-    return "Password must contain at least one uppercase letter";
+    return "Пароль должен содержать хотя бы одну заглавную букву";
   }
 
   // Check if password contains at least one digit
   const digitPattern = /\d/;
   if (!digitPattern.test(value)) {
-    return "Password must contain at least one digit";
+    return "Пароль должен содержать хотя бы одну цифру";
   }
 
   return false;
@@ -80,13 +80,13 @@ export const password = (value: string) => {
 export const phone = (value: string) => {
   // Check if the phone number is not from 10 to 15 characters long
   if (value.length < 10 || value.length > 15) {
-    return "Phone number must be from 10 to 15 characters long";
+    return "Номер телефона должен содержать от 10 до 15 символов";
   }
 
   // Check if phone number consists of digits and possibly starts with a plus
   const phonePattern = /^\+?\d+$/;
   if (!phonePattern.test(value)) {
-    return "Phone number must consist of only digits and optionally start with a plus sign";
+    return "Номер телефона должен состоять только из цифр и (необязательно) начинаться со знака плюс";
   }
 
   return false;
@@ -95,7 +95,7 @@ export const phone = (value: string) => {
 export const message = (value: string) => {
   // Check if the message is empty
   if (!value.trim()) {
-    return "Message should not be empty";
+    return "Сообщение не должно быть пустым";
   }
 
   return false;

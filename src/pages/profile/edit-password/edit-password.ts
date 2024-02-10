@@ -1,6 +1,6 @@
 import { InputField } from "../../../components";
 import Block from "../../../core/Block";
-import { PAGES, navigate } from "../../../core/navigate";
+import { PAGES, router } from "../../../core/Router";
 import template from "./edit-password.hbs?raw";
 import * as validators from "../../../utils/validate";
 
@@ -21,7 +21,7 @@ export class EditPasswordPage extends Block<IProps, TRef> {
         repeatNewPassword: validators.password,
       },
       handleBackClick: () => {
-        navigate(PAGES.PROFILE_PAGE);
+        router.go(PAGES.PROFILE);
       },
       handleSaveChangesClick: () => {
         const oldPassword = this.refs.oldPassword.value();

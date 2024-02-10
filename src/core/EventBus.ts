@@ -16,7 +16,7 @@ export default class EventBus<
 
   off(event: E, callback: Listener<M[E]>) {
     if (!this.listeners[event]) {
-      throw new Error(`Нет события: ${event}`);
+      // throw new Error(`Нет события: ${event}`);
     }
 
     this.listeners[event] = this.listeners[event]!.filter(

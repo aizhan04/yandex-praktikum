@@ -1,5 +1,5 @@
 import Block from "../../core/Block";
-import { PAGES, navigate } from "../../core/navigate";
+import { PAGES, router } from "../../core/Router";
 import template from "./chats.hbs?raw";
 // @ts-ignore
 import userAvatar from "../../assets/user.svg";
@@ -92,10 +92,10 @@ export class ChatsPage extends Block<Props, TRef> {
       ],
       handleProfileClick: (event: Event) => {
         event.preventDefault();
-        navigate(PAGES.PROFILE_PAGE);
+        router.go(PAGES.PROFILE);
       },
       handleChatClick: () => {
-        navigate(PAGES.CHATS);
+        router.go(PAGES.CHATS);
       },
       handleSendClick: () => {
         const message = this.refs.message.value();
