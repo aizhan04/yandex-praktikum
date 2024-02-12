@@ -1,8 +1,9 @@
-import { InputField } from "../../../components";
+import { ErrorText, InputField, SuccessText } from "../../../components";
 import Block from "../../../core/Block";
-import { PAGES, router } from "../../../core/Router";
+import { router } from "../../../core/Router";
 import template from "./edit-password.hbs?raw";
 import * as validators from "../../../utils/validate";
+import { changePassword } from "../../../services/user";
 
 interface IProps {}
 
@@ -10,6 +11,8 @@ type TRef = {
   oldPassword: InputField;
   newPassword: InputField;
   repeatNewPassword: InputField;
+  errorText: ErrorText;
+  successText: SuccessText;
 };
 
 export class EditPasswordPage extends Block<IProps, TRef> {
@@ -21,18 +24,26 @@ export class EditPasswordPage extends Block<IProps, TRef> {
         repeatNewPassword: validators.password,
       },
       handleBackClick: () => {
-        router.go(PAGES.PROFILE);
+        router.back();
       },
-      handleSaveChangesClick: () => {
+      handleSaveChangesClick: async () => {
         const oldPassword = this.refs.oldPassword.value();
         const newPassword = this.refs.newPassword.value();
         const repeatNewPassword = this.refs.repeatNewPassword.value();
         if (!oldPassword || !newPassword || !repeatNewPassword) return;
-        console.log({
-          oldPassword,
-          newPassword,
-          repeatNewPassword,
-        });
+        try {
+          await changePassword({
+            oldPassword,
+            newPassword,
+          });
+          this.refs.errorText.setProps({ error: "Ошибка" });
+          this.refs.successText.setProps({
+            success: "Пароль изменен",
+          });
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } catch (error: any) {
+          this.refs.errorText.setProps({ error: error.message });
+        }
       },
     });
   }

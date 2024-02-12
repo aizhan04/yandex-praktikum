@@ -4,12 +4,15 @@ import templateInputSignIn from "./input-signIn.hbs?raw";
 import templateInputChat from "./input-chat.hbs?raw";
 
 interface Props {
-  type: "email" | "password" | "text";
+  type: "email" | "password" | "text" | "file";
   name: string;
   label: string;
+  hidden?: boolean;
   env: "registration" | "profile" | "chat";
   placeholder?: string;
-  onBlur: () => void;
+  onBlur?: (e: Event) => void;
+  onChange?: (e: Event) => void;
+  onInput?: (e: Event) => void;
   events: Events;
 }
 
@@ -17,10 +20,27 @@ export class Input extends Block<Props> {
   constructor(props: Props) {
     super({
       ...props,
-      events: {
-        blur: props.onBlur,
-      },
     });
+  }
+
+  protected init() {
+    if (this.props.onBlur) {
+      this.props.events = {
+        blur: this.props.onBlur,
+      };
+    }
+
+    if (this.props.onChange) {
+      this.props.events = {
+        change: this.props.onChange,
+      };
+    }
+
+    if (this.props.onInput) {
+      this.props.events = {
+        input: this.props.onInput,
+      };
+    }
   }
 
   protected render(): string {

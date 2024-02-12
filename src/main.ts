@@ -29,7 +29,7 @@ declare global {
 const initState: AppState = {
   error: null,
   user: null,
-  isOpenDialogChat: false,
+  isOpenModalChat: false,
   // isOpenDialogUsers: false,
   // isOpenDialogDeleteUsers: false,
   // isOpenDialogChatOptions: false,

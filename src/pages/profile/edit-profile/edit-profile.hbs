@@ -12,6 +12,7 @@
                     type="email"
                     env="profile"
                     placeholder="test@yandex.ru"
+                    value="test@yandex.ru"
                     ref="email"
                     validate=validate.email
             }}}
@@ -23,6 +24,7 @@
                     type="text"
                     env="profile"
                     placeholder="ivanivanov"
+                    value="ivanivanov"
                     ref="login"
                     validate=validate.login
             }}}
@@ -35,6 +37,7 @@
                     env="profile"
                     placeholder="Ivan"
                     ref="first_name"
+                    value="Ivan"
                     validate=validate.first_name
             }}}
 
@@ -46,6 +49,7 @@
                     env="profile"
                     placeholder="Ivanov"
                     ref="second_name"
+                    value="Ivanov"
                     validate=validate.second_name
             }}}
 
@@ -57,6 +61,7 @@
                     env="profile"
                     placeholder="Ivan"
                     ref="display_name"
+                    value="Ivan"
                     validate=validate.display_name
             }}}
 
@@ -68,6 +73,7 @@
                     env="profile"
                     placeholder="+7(909)9673030"
                     ref="phone"
+                    value="+7(909)9673030"
                     validate=validate.phone
             }}}
         </div>
@@ -79,5 +85,9 @@
                     onClick=handleSaveChangesClick
             }}}
         </div>
+
+        {{{ ErrorText error=error ref="errorText" type="form" }}}
+
+        {{{ SuccessText success=success ref="successText" }}}
     </form>
 </main>

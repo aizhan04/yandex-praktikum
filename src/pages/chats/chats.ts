@@ -104,6 +104,12 @@ export class ChatsPage extends Block<Props, TRef> {
           message,
         });
       },
+      openDialog: () => {
+        window.store.set({ isOpenModalChat: true });
+        console.log("STORE: ", window.store.getState());
+        console.log("openDialog");
+      },
+      closeModal: () => window.store.set({ isOpenModalChat: false }),
     });
   }
 

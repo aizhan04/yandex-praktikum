@@ -12,7 +12,8 @@ interface Props {
   placeholder?: string;
   disabled?: boolean;
   env: "registration" | "profile" | "chat";
-  onBlur: () => void;
+  onBlur?: () => void;
+  value?: string;
   validate: (value: string) => boolean | string;
 }
 

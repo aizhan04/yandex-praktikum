@@ -4,7 +4,9 @@
             type={{ type }}
             placeholder={{ placeholder }}
             name={{ name }}
+        {{#if value }}value={{ value }}{{/if}}
         {{#if disabled }}
             disabled
         {{/if}}
+        {{#if hidden}} hidden {{/if}}
     >

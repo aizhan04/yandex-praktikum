@@ -10,6 +10,8 @@ export { Chat } from "./chat/chat";
 export { Search } from "./search/search";
 export { Avatar } from "./avatar/avatar";
 export { InputField } from "./inputField/inputField";
+export { SuccessText } from "./successText/success-text";
+export { Modal } from "./modal/modal";
 
 // icons
 export { ArrowRight } from "./icons/arrow";

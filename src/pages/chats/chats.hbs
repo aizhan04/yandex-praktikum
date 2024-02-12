@@ -3,6 +3,7 @@
     <!--    Левая сторона -->
     <div class="left">
         <div class="list-container__head">
+            {{{ ModalCreateChat onSave=onSave onClose=closeModal ref="createChat"}}}
             <div class="list-container__profile-block">
                 {{{
                     Button
@@ -14,6 +15,15 @@
 
             <div>
                 {{{ Search }}}
+            </div>
+            <div class="list-container__button">
+                {{{
+                Button
+                        primary="true"
+                        text="Создать чат"
+                        type="button"
+                        onClick=openModal
+                }}}
             </div>
         </div>
         <!--Список чатов-->

@@ -1,10 +1,14 @@
 import { InputField } from "../../../components";
 import Block from "../../../core/Block";
-import { PAGES, router } from "../../../core/Router";
+import { router } from "../../../core/Router";
 import template from "./edit-profile.hbs?raw";
 import * as validators from "../../../utils/validate";
+import { UserDTO } from "../../../api/type";
+import { connect } from "../../../utils/connect";
 
-interface IProps {}
+interface IProps {
+  user: UserDTO;
+}
 
 type TRef = {
   first_name: InputField;
@@ -16,8 +20,11 @@ type TRef = {
 };
 
 export class EditProfilePage extends Block<IProps, TRef> {
-  constructor() {
+  constructor(props: IProps) {
     super({
+      ...props,
+      // eslint-disable-next-line
+      // @ts-ignore
       validate: {
         first_name: validators.first_name,
         second_name: validators.second_name,
@@ -27,7 +34,7 @@ export class EditProfilePage extends Block<IProps, TRef> {
         phone: validators.phone,
       },
       handleBackClick: () => {
-        router.go(PAGES.PROFILE);
+        router.back();
       },
       handleSaveChangesClick: (event: Event) => {
         event.preventDefault();
@@ -52,7 +59,6 @@ export class EditProfilePage extends Block<IProps, TRef> {
           !phone
         )
           return;
-        console.log("hsdfjkds");
         console.log({
           // eslint-disable-next-line camelcase
           first_name,
@@ -72,3 +78,5 @@ export class EditProfilePage extends Block<IProps, TRef> {
     return template;
   }
 }
+
+export default connect(({ user }) => ({ user }))(EditProfilePage);

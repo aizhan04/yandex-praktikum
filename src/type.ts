@@ -1,7 +1,7 @@
 export type AppState = {
   error: string | null;
   user: User | null;
-  isOpenDialogChat: boolean;
+  isOpenModalChat: boolean;
   chats: Chat[];
 };
 
