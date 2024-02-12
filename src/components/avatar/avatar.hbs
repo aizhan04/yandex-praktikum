@@ -1,30 +1,22 @@
-<div>
-    <label class="avatar" for="avatar">
-        <div class="avatar-overlay">
-            <p>Изменить</p>
-        </div>
+<label
+        class="avatar"
+        for="avatar"
+>
+    <div class="avatar-overlay">
+        <p>Change avatar</p>
+    </div>
 
-        {{#if img}}
-            <img src={{ img }} alt="avatar">
-        {{else}}
-            {{> UserPhoto }}
-        {{/if}}
+    {{> UserPhoto }}
 
-        {{{
-        Input
-                type="file"
-                hidden="true"
-                id="avatar"
-                name="avatar"
-                placeholder="Avatar"
-                env="profile"
-                ref="input"
-                onChange=handleAvatarChange
-        }}}
-    </label>
-
-    {{{ ErrorText error=error ref="errorText" }}}
-
-    {{{ SuccessText success=success ref="successText" }}}
-</div>
-
+    {{{
+    Input
+            type="file"
+            hidden="true"
+            id="avatar"
+            name="avatar"
+            placeholder="Avatar"
+            env="profile"
+            ref="input"
+            onChange=handleAvatarChange
+    }}}
+</label>

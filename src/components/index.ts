@@ -12,6 +12,7 @@ export { Avatar } from "./avatar/avatar";
 export { InputField } from "./inputField/inputField";
 export { SuccessText } from "./successText/success-text";
 export { Modal } from "./modal/modal";
+export { Anchor } from "./anchor";
 
 // icons
 export { ArrowRight } from "./icons/arrow";
