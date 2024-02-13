@@ -31,17 +31,19 @@ export class EditPasswordPage extends Block<IProps, TRef> {
         const newPassword = this.refs.newPassword.value();
         const repeatNewPassword = this.refs.repeatNewPassword.value();
         if (!oldPassword || !newPassword || !repeatNewPassword) return;
+
         try {
           await changePassword({
             oldPassword,
             newPassword,
           });
-          this.refs.errorText.setProps({ error: "Ошибка" });
+          this.refs.errorText.setProps({ error: undefined });
           this.refs.successText.setProps({
-            success: "Пароль изменен",
+            success: "Password is set successfully",
           });
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (error: any) {
+          this.refs.successText.setProps({ success: undefined });
           this.refs.errorText.setProps({ error: error.message });
         }
       },

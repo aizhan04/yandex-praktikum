@@ -5,16 +5,17 @@ import Profile from "./profile-field.hbs?raw";
 import Chat from "./chat-field.hbs?raw";
 import { Input } from "../input/input";
 
-interface Props {
+interface IProps {
   name: string;
   label: string;
   type: "email" | "password" | "text";
+  value?: string;
   placeholder?: string;
   disabled?: boolean;
-  env: "registration" | "profile" | "chat";
+  env: "registration" | "profile" | "chat" | "search";
   onBlur?: () => void;
-  value?: string;
   validate: (value: string) => boolean | string;
+  onInput?: () => void;
 }
 
 type TRef = {
@@ -22,8 +23,8 @@ type TRef = {
   errorText: ErrorText;
 };
 
-export class InputField extends Block<Props, TRef> {
-  constructor(props: Props) {
+export class InputField extends Block<IProps, TRef> {
+  constructor(props: IProps) {
     super({
       ...props,
       onBlur: () => this.validate(),
@@ -43,6 +44,7 @@ export class InputField extends Block<Props, TRef> {
     const { value } = element;
     const error = this.props.validate(value);
     if (error) {
+      console.log(error, "errror");
       this.refs.errorText.setProps({ error });
       return false;
     }

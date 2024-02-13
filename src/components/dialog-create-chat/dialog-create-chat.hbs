@@ -1,0 +1,38 @@
+{{#Dialog open=isOpenDialogChat}}
+    <form method="dialog">
+        <h3>Create new chat</h3>
+
+        {{{
+            InputField
+                name="chatTitle"
+                label="Chat name"
+                placeholder="Chat name"
+                type="text"
+                ref="chatTitle"
+                env="chat"
+                validate=validate.chatTitle
+        }}}
+
+        {{{ ErrorText error=error }}}
+
+        <div>
+            <div class="create-button">
+                {{{
+                Button
+                        text="Create"
+                        primary="true"
+                        type="submit"
+                        onClick=onSave
+                }}}
+            </div>
+           <div class="close-button">
+               {{{
+               Button
+                       text="Cancel"
+                       type="button"
+                       onClick=onClose
+               }}}
+           </div>
+        </div>
+    </form>
+{{/Dialog}}

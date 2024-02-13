@@ -1,13 +1,15 @@
 <div class="chat-bottom__send-message">
-    <label
-            for="{{name}}"
-    >
-        <input
-                class="chat-bottom__input"
-                ref="input"
-                type="{{type}}"
-                placeholder="{{placeholder}}"
-                name="{{name}}"
-        >
-    </label>
+    {{{
+        Input
+            type=type
+            name=name
+            onBlur=onBlur
+            placeholder=placeholder
+            env=env
+            ref="input"
+    }}}
+
+    <div class="error-text">
+        {{{ ErrorText error=error }}}
+    </div>
 </div>

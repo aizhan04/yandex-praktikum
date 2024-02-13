@@ -29,14 +29,14 @@ declare global {
 const initState: AppState = {
   error: null,
   user: null,
-  isOpenModalChat: false,
-  // isOpenDialogUsers: false,
-  // isOpenDialogDeleteUsers: false,
-  // isOpenDialogChatOptions: false,
+  isOpenDialogChat: false,
+  isOpenDialogUsers: false,
+  isOpenDialogDeleteUsers: false,
+  isOpenDialogChatOptions: false,
   chats: [],
-  // activeChat: null,
-  // usersSearched: null,
-  // socket: null,
+  activeChat: null,
+  usersSearched: null,
+  socket: null,
 };
 
 window.store = new Store<AppState>(initState);

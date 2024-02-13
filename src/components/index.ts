@@ -11,8 +11,15 @@ export { Search } from "./search/search";
 export { Avatar } from "./avatar/avatar";
 export { InputField } from "./inputField/inputField";
 export { SuccessText } from "./successText/success-text";
-export { Modal } from "./modal/modal";
+export { Dialog } from "./dialog/dialog";
 export { Anchor } from "./anchor";
+export { default as DialogCreateChat } from "./dialog-create-chat";
+export { default as DialogAddUsers } from "./dialog-add-users";
+export { default as DialogDeleteUsers } from "./dialog-delete-users";
+export { default as UsersList } from "./users-list";
+export { ChatOptions } from "./chat-options";
+export { AddMember } from "./chat-options/add-member";
+export { DeleteMember } from "./chat-options/delete-member/delete-member";
 
 // icons
 export { ArrowRight } from "./icons/arrow";

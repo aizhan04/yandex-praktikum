@@ -1,18 +1,21 @@
-<div class="input">
-    <label class="input__container">
-        <div class="input__label">{{label}}</div>
+    <div class="field-profile">
+        <label
+                class="field-profile__label"
+                for={{ name }}
+        >
+            {{ label }}
+        </label>
         {{{
-           Input
+            Input
                 type=type
                 name=name
-                id=name
-                label=label
                 onBlur=onBlur
                 env=env
                 ref="input"
         }}}
-    </label>
-    {{{ ErrorText error=error ref="errorText" }}}
-</div>
+    </div>
+       <div class="error-text">
+           {{{ ErrorText error=error }}}
+       </div>
 
 

@@ -20,6 +20,40 @@
     gap: 10px;
   }
 
+  &__options {
+    position: absolute;
+    top: 120%;
+    right: 0;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 0 6px 0 rgb(0 0 0 / 14%);
+    overflow: hidden;
+
+    &-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: forestgreen;
+      }
+
+      &:first-child {
+        padding: 15px 15px 7.5px;
+      }
+
+      &:last-child {
+        padding: 7.5px 15px 15px;
+      }
+
+      &:not(:first-child, :last-child) {
+        padding: 7.5px 15px;
+      }
+    }
+  }
+
+
   &__details {
     cursor: pointer;
   }

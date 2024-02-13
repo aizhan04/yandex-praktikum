@@ -8,21 +8,33 @@
              width="47px"
              height="47px">
     </div>
-    <div class="list-item__content">
-        <div class="list-item__head">
-            <h4>{{name}}</h4>
-            <p class="list-item__time">{{time}}</p>
+
+    {{#if lastMessage}}
+        <div class="list-item__info">
+            <div class="list-item__title">
+                <h2>{{ title }}</h2>
+            </div>
+            <h3 class="list-item__name">{{ lastMessage.user.firstName }}</h3>
+            <h4 class="list-item__message">{{ lastMessage.content }}</h4>
         </div>
-        <div class="list-item__message">
-            {{#if sendMessage}}
-                <p><span>Вы: </span>{{message}}</p>
-            {{else }}
-                <p>{{message}}</p>
-            {{/if}}
+
+        <div class="list-item__additional">
+            <time
+                    class="list-item__time"
+                    datetime={{ lastMessageTime }}
+            >
+                {{ lastMessageTime }}
+            </time>
             {{#if unreadCount}}
-                <div class="list-item__unread-count">{{unreadCount}}</div>
+                <div class="list-item__unread">
+                    <span>{{ unreadCount }}</span>
+                </div>
             {{/if}}
         </div>
-    </div>
+    {{else}}
+        <div class="list-item__title">
+            <h2>{{ title }}</h2>
+        </div>
+    {{/if}}
 </li>
 

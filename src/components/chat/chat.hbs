@@ -1,13 +1,44 @@
 <!--Правая сторона-->
 <main class="chat">
     <div class="chat-header">
+        {{{
+        DialogAddUsers
+                onClose=onClose
+                addUserToChat=addUserToChat
+                ref="dialogAddUsers"
+                onInput=findUsers
+        }}}
+
+        {{{
+        DialogDeleteUsers
+                onClose=onClose
+                deleteUsersFromChat=deleteUsersFromChat
+                ref="dialogDeleteUsers"
+        }}}
+
+        <div>
+            {{#if isOpenDialogChatOptions}}
+                {{{ ChatOptions handleAddMember=handleAddMember handleDeleteMember=handleDeleteMember }}}
+            {{/if}}
+        </div>
+
+{{#if companion}}
         <div class="chat-header__user-info">
-            <p>image</p>
-            <p class="chat-header__user-name">Vadim</p>
+            <img
+                    src={{ companion.avatar }}
+                    alt="User Avatar"
+                    width="34px"
+                    height="34px"
+            >
+            <p class="chat-header__user-name">{{ companion.displayName }}</p>
         </div>
-        <div class="chat-header__details">
-            {{> Dots}}
-        </div>
+<!--        <div class="chat-header__details">-->
+<!--        </div>-->
+        {{else}}
+        <h2 class="chat-header__title">{{ activeChat.title }}</h2>
+        {{/if}}
+
+        {{{ Dots onClick=handleChatOptionsToggle }}}
     </div>
 
     <!--    Сама переписка-->

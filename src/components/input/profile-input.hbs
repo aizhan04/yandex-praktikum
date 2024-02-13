@@ -1,12 +1,11 @@
-    <input
-            ref="input"
-            class="field-profile__input"
-            type={{ type }}
-            placeholder={{ placeholder }}
-            name={{ name }}
+<input
+        ref="input"
+        class="field-profile__input"
+        type={{ type }}
+        id={{ name }}
+        placeholder="{{ placeholder }}"
+        name={{ name }}
         {{#if value }}value={{ value }}{{/if}}
-        {{#if disabled }}
-            disabled
-        {{/if}}
+        {{#if disabled }} disabled {{/if}}
         {{#if hidden}} hidden {{/if}}
-    >
+>

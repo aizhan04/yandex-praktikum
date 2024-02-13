@@ -3,21 +3,21 @@ import templateInputProfile from "./profile-input.hbs?raw";
 import templateInputSignIn from "./input-signIn.hbs?raw";
 import templateInputChat from "./input-chat.hbs?raw";
 
-interface Props {
+interface IProps {
   type: "email" | "password" | "text" | "file";
   name: string;
-  label: string;
+  env: "registration" | "profile" | "chat" | "search";
   hidden?: boolean;
-  env: "registration" | "profile" | "chat";
   placeholder?: string;
+  value?: string;
   onBlur?: (e: Event) => void;
   onChange?: (e: Event) => void;
   onInput?: (e: Event) => void;
   events: Events;
 }
 
-export class Input extends Block<Props> {
-  constructor(props: Props) {
+export class Input extends Block<IProps> {
+  constructor(props: IProps) {
     super({
       ...props,
     });

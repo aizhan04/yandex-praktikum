@@ -6,8 +6,7 @@
             {{ label }}
         </label>
         {{{
-        Input
-                ref="input"
+          Input
                 type=type
                 name=name
                 placeholder=placeholder
@@ -15,11 +14,12 @@
                 env=env
                 onBlur=onBlur
                 value=value
+                ref="input"
         }}}
     </div>
-    <p class="field-profile__error">
-        {{{ ErrorText error=error ref="errorText" }}}
-    </p>
+        <div class="error-text">
+            {{{ ErrorText error=error }}}
+        </div>
 
 
 
