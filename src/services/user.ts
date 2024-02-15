@@ -36,4 +36,18 @@ const changePassword = async (data: Password) => {
   return response;
 };
 
-export { changeProfile, changeAvatar, changePassword };
+const searchUsers = async (query: string) => {
+  const response = await usersApi.search(query);
+
+  if (apiHasError(response)) {
+    throw Error(response.reason);
+  }
+
+  const users = response.map((user) => transformUser(user));
+
+  window.store.set({ usersSearched: users });
+
+  return response;
+};
+
+export { changeProfile, changeAvatar, changePassword, searchUsers };

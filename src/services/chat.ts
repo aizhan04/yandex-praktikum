@@ -1,6 +1,6 @@
 import ChatApi from "../api/chat";
 import { apiHasError } from "../utils/apiHasError";
-import { transformChats } from "../utils/apiTransformers";
+import { transformChats, transformChatUser } from "../utils/apiTransformers";
 
 const chatApi = new ChatApi();
 
@@ -19,13 +19,47 @@ const createChat = async (title: string) => {
     throw Error(response.reason);
   }
 
-  const responseChat = await chatApi.getChats();
-  if (apiHasError(responseChat)) {
-    throw Error(responseChat.reason);
-  }
-
   const chats = await getChats();
   window.store.set({ chats });
 };
 
-export { createChat, getChats };
+interface IAddOrRemoveUsersToChat {
+  users: number[];
+  chatId: number;
+}
+
+const addUsersToChat = async ({ users, chatId }: IAddOrRemoveUsersToChat) => {
+  const response = await chatApi.addUsers({ users, chatId });
+  if (apiHasError(response)) {
+    throw Error(response.reason);
+  }
+};
+
+const removeUsersFromChat = async ({
+  users,
+  chatId,
+}: IAddOrRemoveUsersToChat) => {
+  const response = await chatApi.deleteUsers({ users, chatId });
+  if (apiHasError(response)) {
+    throw Error(response.reason);
+  }
+};
+
+const getChatParticipants = async (chatId: number) => {
+  const response = await chatApi.participants(chatId);
+  if (apiHasError(response)) {
+    throw Error(response.reason);
+  }
+
+  const users = response.map((user) => transformChatUser(user));
+
+  return users;
+};
+
+export {
+  createChat,
+  getChats,
+  addUsersToChat,
+  removeUsersFromChat,
+  getChatParticipants,
+};

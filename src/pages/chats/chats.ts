@@ -40,6 +40,7 @@ export class ChatsPage extends Block<IProps, TRefs> {
 
         try {
           await createChat(chatTitle);
+          console.log("sdfkjh");
           window.store.set({ isOpenDialogChat: false });
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (error: any) {
