@@ -1,5 +1,5 @@
 export { LoginPage } from "./login/login";
-export { ChatsPage } from "./chats/chats";
+export { default as ChatsPage } from "./chats/chats";
 export { ProfilePage } from "./profile/profile";
 export { EditPasswordPage } from "./profile/edit-password/edit-password";
 export { EditProfilePage } from "./profile/edit-profile/edit-profile";
