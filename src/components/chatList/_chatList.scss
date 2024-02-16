@@ -1,1 +1,9 @@
+.chat-list {
+  & .chats-card {
+    border-bottom: 1px solid #809ede;
+  }
 
+  & .chats-card:first-child {
+    border-top: 1px solid #809ede;
+  }
+}

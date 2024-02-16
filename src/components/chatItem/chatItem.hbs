@@ -1,40 +1,40 @@
-<li class="
-      list-item
-    {{#if isActiveChat}} list-item__active {{/ if}}
-">
-    <div class="list-item__image">
-        <img src={{userAvatar}}
-             alt="Аватар"
-             width="47px"
-             height="47px">
-    </div>
+<li class="chats-card {{#if active}} chats-card_active {{/if}}">
+    {{#if avatar}}
+        <div class="chats-card__image">
+            <img
+                    src="{{ avatar }}"
+                    alt="Chat card image"
+                    width="47px"
+                    height="47px"
+            />
+        </div>
+    {{/if}}
 
     {{#if lastMessage}}
-        <div class="list-item__info">
-            <div class="list-item__title">
+        <div class="chats-card__info">
+            <div class="chats-card__title">
                 <h2>{{ title }}</h2>
             </div>
-            <h3 class="list-item__name">{{ lastMessage.user.firstName }}</h3>
-            <h4 class="list-item__message">{{ lastMessage.content }}</h4>
+            <h3 class="chats-card__name">{{ lastMessage.user.firstName }}</h3>
+            <h4 class="chats-card__message">{{ lastMessage.content }}</h4>
         </div>
 
-        <div class="list-item__additional">
+        <div class="chats-card__additional">
             <time
-                    class="list-item__time"
+                    class="chats-card__time"
                     datetime={{ lastMessageTime }}
             >
                 {{ lastMessageTime }}
             </time>
             {{#if unreadCount}}
-                <div class="list-item__unread">
+                <div class="chats-card__unread">
                     <span>{{ unreadCount }}</span>
                 </div>
             {{/if}}
         </div>
     {{else}}
-        <div class="list-item__title">
+        <div class="chats-card__title">
             <h2>{{ title }}</h2>
         </div>
     {{/if}}
 </li>
-
