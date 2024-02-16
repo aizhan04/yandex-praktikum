@@ -21,8 +21,7 @@
                 {{{ ChatOptions handleAddMember=handleAddMember handleDeleteMember=handleDeleteMember }}}
             {{/if}}
         </div>
-
-{{#if companion}}
+        {{#if companion}}
         <div class="chat-header__user-info">
             <img
                     src={{ companion.avatar }}
@@ -41,7 +40,6 @@
 
     <!--    Сама переписка-->
         <div class="chat-content">
-
             <div class="chat-content__my-message">
                 {{#each activeChat.messages}}
                     <div class="chat-main__message {{#if isMine}} chat-main__message_mine {{/if}}">

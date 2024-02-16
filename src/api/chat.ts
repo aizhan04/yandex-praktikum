@@ -5,12 +5,14 @@ import {
   CreateChat,
   AddOrRemoveUsers,
   ChatUserDTO,
+  ChatToken,
 } from "./type";
 
 // eslint-disable-next-line no-shadow
 enum CHAT {
   BASE = "/chats",
   USERS = "/users",
+  TOKEN = "/token",
 }
 
 const chatApi = new HTTPTransport(CHAT.BASE);
@@ -34,5 +36,9 @@ export default class ChatApi {
 
   async participants(chatId: number): Promise<ChatUserDTO[] | APIError> {
     return chatApi.get(`/${chatId}${CHAT.USERS}`);
+  }
+
+  async token(chatId: number): Promise<ChatToken> {
+    return chatApi.post(`${CHAT.TOKEN}/${chatId}`);
   }
 }

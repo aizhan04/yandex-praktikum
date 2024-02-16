@@ -1,6 +1,8 @@
 import ChatApi from "../api/chat";
+import { Message } from "../type";
 import { apiHasError } from "../utils/apiHasError";
-import { transformChats, transformChatUser } from "../utils/apiTransformers";
+import { transformChatUser, transformChats } from "../utils/apiTransformers";
+// eslint-disable-next-line import/no-extraneous-dependencies
 
 const chatApi = new ChatApi();
 
@@ -21,6 +23,17 @@ const createChat = async (title: string) => {
 
   const chats = await getChats();
   window.store.set({ chats });
+};
+
+const getChatParticipants = async (chatId: number) => {
+  const response = await chatApi.participants(chatId);
+  if (apiHasError(response)) {
+    throw Error(response.reason);
+  }
+
+  const users = response.map((user) => transformChatUser(user));
+
+  return users;
 };
 
 interface IAddOrRemoveUsersToChat {
@@ -45,15 +58,101 @@ const removeUsersFromChat = async ({
   }
 };
 
-const getChatParticipants = async (chatId: number) => {
-  const response = await chatApi.participants(chatId);
+const getChatToken = async (chatId: number) => {
+  const response = await chatApi.token(chatId);
   if (apiHasError(response)) {
     throw Error(response.reason);
   }
+  return response;
+};
 
-  const users = response.map((user) => transformChatUser(user));
+type WS = {
+  chatId: string;
+  userId: string;
+  token: string;
+};
 
-  return users;
+const ws = ({ chatId, userId, token }: WS) => {
+  const socket = new WebSocket(
+    `wss://ya-praktikum.tech/ws/chats/${userId}/${chatId}/${token}`,
+  );
+
+  const ping = () => socket.send(JSON.stringify({ type: "ping" }));
+
+  let pingIntervalId: NodeJS.Timeout;
+
+  socket.onopen = () => {
+    console.log("[open] Connection established");
+
+    socket.send(
+      JSON.stringify({
+        content: "0",
+        type: "get old",
+      }),
+    );
+
+    pingIntervalId = setInterval(ping, 5000);
+  };
+
+  socket.onmessage = (event) => {
+    try {
+      const data = JSON.parse(event.data);
+      const prevState = window.store.getState().activeChat;
+
+      if (data.type === "pong" || data.type === "user connected") {
+        return;
+      }
+
+      if (Array.isArray(data)) {
+        data.forEach((message: Message) => {
+          if (String(message.user_id) === userId) {
+            message.isMine = true;
+          }
+        });
+        window.store.set({
+          activeChat: {
+            ...prevState,
+            messages: [...data, ...(prevState?.messages || [])],
+          },
+        });
+        console.log("STORE: ", window.store.getState());
+        return;
+      }
+
+      if (String(data.user_id) === userId) {
+        data.isMine = true;
+      }
+
+      window.store.set({
+        activeChat: {
+          ...prevState,
+          messages: [data, ...(prevState?.messages || [])],
+        },
+      });
+      console.log("STORE: ", window.store.getState());
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  socket.onclose = (event) => {
+    if (event.wasClean) {
+      console.log("[close] Connection closed cleanly");
+    } else {
+      console.log("[close] Connection died");
+    }
+
+    clearInterval(pingIntervalId);
+
+    console.log(`Code: ${event.code} | Reason: ${event.reason}`);
+  };
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  socket.onerror = function (error: any) {
+    console.log("[error]", error.message);
+  };
+
+  return socket;
 };
 
 export {
@@ -62,4 +161,6 @@ export {
   addUsersToChat,
   removeUsersFromChat,
   getChatParticipants,
+  getChatToken,
+  ws,
 };
