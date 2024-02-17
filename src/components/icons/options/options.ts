@@ -1,5 +1,5 @@
 import Block, { Events } from "../../../core/Block";
-import template from "./dots.hbs?raw";
+import template from "./options.hbs?raw";
 
 interface IProps {
   onClick: () => void;

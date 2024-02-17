@@ -1,44 +1,45 @@
 <!--Правая сторона-->
-<main class="chat">
-    <div class="chat-header">
-        {{{
-        DialogAddUsers
-                onClose=onClose
-                addUserToChat=addUserToChat
-                ref="dialogAddUsers"
-                onInput=findUsers
-        }}}
+<div class="chat-container">
+    <main class="chat">
+        <div class="chat-header">
+            {{{
+            DialogAddUsers
+                    onClose=onClose
+                    addUserToChat=addUserToChat
+                    ref="dialogAddUsers"
+                    onInput=findUsers
+            }}}
 
-        {{{
-        DialogDeleteUsers
-                onClose=onClose
-                deleteUsersFromChat=deleteUsersFromChat
-                ref="dialogDeleteUsers"
-        }}}
+            {{{
+            DialogDeleteUsers
+                    onClose=onClose
+                    deleteUsersFromChat=deleteUsersFromChat
+                    ref="dialogDeleteUsers"
+            }}}
 
-        <div>
-            {{#if isOpenDialogChatOptions}}
-                {{{ ChatOptions handleAddMember=handleAddMember handleDeleteMember=handleDeleteMember }}}
+            <div>
+                {{#if isOpenDialogChatOptions}}
+                    {{{ ChatOptions handleAddMember=handleAddMember handleDeleteMember=handleDeleteMember }}}
+                {{/if}}
+            </div>
+            {{#if companion}}
+                <div class="chat-header__user-info">
+                    <img
+                            src={{ companion.avatar }}
+                            alt="User Avatar"
+                            width="34px"
+                            height="34px"
+                    >
+                    <p class="chat-header__user-name">{{ companion.displayName }}</p>
+                </div>
+            {{else}}
+                <h2 class="chat-header__title">{{ activeChat.title }}</h2>
             {{/if}}
-        </div>
-        {{#if companion}}
-        <div class="chat-header__user-info">
-            <img
-                    src={{ companion.avatar }}
-                    alt="User Avatar"
-                    width="34px"
-                    height="34px"
-            >
-            <p class="chat-header__user-name">{{ companion.displayName }}</p>
-        </div>
-        {{else}}
-        <h2 class="chat-header__title">{{ activeChat.title }}</h2>
-        {{/if}}
 
-        {{{ Dots onClick=handleChatOptionsToggle }}}
-    </div>
+            {{{ OptionsIcon onClick=handleChatOptionsToggle }}}
+        </div>
 
-    <!--    Сама переписка-->
+        <!--    Сама переписка-->
         <div class="chat-content">
             <div class="chat-content__my-message">
                 {{#each activeChat.messages}}
@@ -53,25 +54,26 @@
             </div>
         </div>
 
-    <!--    Футер переписки-->
-    <div class="chat-bottom">
-        {{> AttachIcon }}
+        <!--    Футер переписки-->
+        <div class="chat-bottom">
+            {{> AttachIcon }}
 
-        {{{
+            {{{
             InputField
-                type="text"
-                name="message"
-                onBlur=onBlur
-                ref="message"
-                env="chat"
-                placeholder="Message"
-                validate=validate.message
-        }}}
-        {{{
+                    type="text"
+                    name="message"
+                    onBlur=onBlur
+                    ref="message"
+                    env="chat"
+                    placeholder="Message"
+                    validate=validate.message
+            }}}
+            {{{
             Button
-                type="button"
-                env='chat'
-                onClick=handleSendClick
-        }}}
-    </div>
-</main>
+                    type="button"
+                    env='chat'
+                    onClick=handleSendClick
+            }}}
+        </div>
+    </main>
+</div>

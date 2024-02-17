@@ -23,7 +23,7 @@ export { DeleteMember } from "./chat-options/delete-member/delete-member";
 
 // icons
 export { ArrowRight } from "./icons/arrow";
-export { Dots } from "./icons/dots";
+export { OptionsIcon } from "./icons/options";
 export { ReadMessage } from "./icons/read";
 export { AttachIcon } from "./icons/attach";
 export { SendIcon } from "./icons/send";

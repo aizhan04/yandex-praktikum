@@ -1,9 +1,18 @@
 /*правая сторона*/
+.chat-container {
+  flex: 70%;
+}
 .chat {
-  height: 100%;
+  height: 100vh;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+
+  &__button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+  }
 }
 
 .chat-header {
@@ -11,7 +20,7 @@
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid #EAEAEA;
-  padding: 0 20px;
+  padding: 10px 20px;
 
   &__user-info {
     height: 60px;
