@@ -4,8 +4,15 @@ import { router } from "../../../core/Router";
 import template from "./edit-password.hbs?raw";
 import * as validators from "../../../utils/validate";
 import { changePassword } from "../../../services/user";
+import { UserDTO } from "../../../api/type";
+import { connect } from "../../../utils/connect";
 
-interface IProps {}
+interface IProps {
+  user: UserDTO;
+  validate: Record<string, (value: string) => string | boolean>;
+  handleBackClick: () => void;
+  handleSaveChangesClick: () => void;
+}
 
 type TRef = {
   oldPassword: InputField;
@@ -16,8 +23,9 @@ type TRef = {
 };
 
 export class EditPasswordPage extends Block<IProps, TRef> {
-  constructor() {
+  constructor(props: IProps) {
     super({
+      ...props,
       validate: {
         oldPassword: validators.password,
         newPassword: validators.password,
@@ -37,10 +45,14 @@ export class EditPasswordPage extends Block<IProps, TRef> {
             oldPassword,
             newPassword,
           });
+          console.log("4444");
+
           this.refs.errorText.setProps({ error: undefined });
           this.refs.successText.setProps({
             success: "Password is set successfully",
           });
+          console.log("6666");
+
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (error: any) {
           this.refs.successText.setProps({ success: undefined });
@@ -54,3 +66,5 @@ export class EditPasswordPage extends Block<IProps, TRef> {
     return template;
   }
 }
+
+export default connect(({ user }) => ({ user }))(EditPasswordPage);

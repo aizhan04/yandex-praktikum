@@ -9,8 +9,8 @@ export enum PAGES {
   REGISTER = "/sign-up",
   CHATS = "/messenger",
   PROFILE = "/settings",
-  EDIT_PROFILE = "/change-profile",
-  EDIT_PASSWORD = "/change-password",
+  EDIT_PROFILE = "/edit-profile",
+  EDIT_PASSWORD = "/edit-password",
   NOT_FOUND = "/404",
   INTERNAL_SERVER_ERROR = "/500",
 }

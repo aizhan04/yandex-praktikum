@@ -2,17 +2,26 @@ import Block from "../../core/Block";
 import { PAGES, router } from "../../core/Router";
 import template from "./profile.hbs?raw";
 import { logout } from "../../services/auth";
+import { UserDTO } from "../../api/type";
+import { connect } from "../../utils/connect";
 
-interface IProps {}
+interface IProps {
+  user: UserDTO;
+  handleChangeProfile: (event: Event) => void;
+  handleChangePassword: (event: Event) => void;
+  handleLogout: (event: Event) => void;
+  handleBackClick: () => void;
+}
 
 export class ProfilePage extends Block<IProps> {
-  constructor() {
+  constructor(props: IProps) {
     super({
-      handleEditProfile: (event: Event) => {
+      ...props,
+      handleChangeProfile: (event: Event) => {
         event.preventDefault();
         router.go(PAGES.EDIT_PROFILE);
       },
-      handleEditPassword: (event: Event) => {
+      handleChangePassword: (event: Event) => {
         event.preventDefault();
         router.go(PAGES.EDIT_PASSWORD);
       },
@@ -35,3 +44,5 @@ export class ProfilePage extends Block<IProps> {
     return template;
   }
 }
+
+export default connect(({ user }) => ({ user }))(ProfilePage);
