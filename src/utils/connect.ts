@@ -6,11 +6,12 @@ import isEqual from "./isEqual";
 export function connect(
   mapStateToProps: (state: AppState) => Partial<AppState>,
 ) {
+  // eslint-disable-next-line func-names
   return function <P extends object, R extends RefType> (
     Component: typeof Block<P, R>,
   ) {
     return class extends Component {
-      private onChangeStoreCallback: () => void;
+      private readonly onChangeStoreCallback: () => void;
 
       constructor(props: P) {
         const { store } = window;

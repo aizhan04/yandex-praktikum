@@ -97,9 +97,7 @@ class Block<Props extends object, Refs extends RefType = RefType> {
   public dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
 
-    Object.values(this.children).forEach((child) =>
-      child.dispatchComponentDidMount(),
-    );
+    Object.values(this.children).forEach((child) => child.dispatchComponentDidMount());
   }
 
   private _componentDidUpdate(oldProps: Props, newProps: Props) {

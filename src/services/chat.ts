@@ -147,7 +147,7 @@ const ws = ({ chatId, userId, token }: WS) => {
     console.log(`Code: ${event.code} | Reason: ${event.reason}`);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any,func-names
   socket.onerror = function (error: any) {
     console.log("[error]", error.message);
   };
