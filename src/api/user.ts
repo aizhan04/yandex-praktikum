@@ -1,6 +1,8 @@
 import { User } from "../type";
 import HTTPTransport from "../utils/httpTransport";
-import { APIError, ChangeUserProfile, Password, UserDTO } from "./type";
+import {
+  APIError, ChangeUserProfile, Password, UserDTO,
+} from "./type";
 
 // eslint-disable-next-line no-shadow
 enum USERS {
