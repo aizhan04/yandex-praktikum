@@ -32,11 +32,8 @@ export class DialogDeleteUsers extends Block<IProps, TRefs> {
   public getSelectedUsersIDs() {
     const result: number[] = [];
     const select = this.refs.usersList.element as HTMLSelectElement;
-    const selectedOptions =
-      select.selectedOptions as HTMLCollectionOf<HTMLOptionElement>;
-    Array.from(selectedOptions).forEach((element) =>
-      result.push(Number(element.value)),
-    );
+    const selectedOptions = select.selectedOptions as HTMLCollectionOf<HTMLOptionElement>;
+    Array.from(selectedOptions).forEach((element) => result.push(Number(element.value)));
     return result;
   }
 

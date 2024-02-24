@@ -20,10 +20,9 @@ export class UsersList extends Block<IProps, TRefs> {
   constructor(props: IProps) {
     super({
       ...props,
-      users: () =>
-        props.activeChat?.users?.filter(
-          (user) => user.id !== window.store.getState().user?.id,
-        ) as ChatUser[],
+      users: () => props.activeChat?.users?.filter(
+        (user) => user.id !== window.store.getState().user?.id,
+      ) as ChatUser[],
     });
   }
 

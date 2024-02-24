@@ -6,7 +6,7 @@ import isEqual from "./isEqual";
 export function connect(
   mapStateToProps: (state: AppState) => Partial<AppState>,
 ) {
-  return function <P extends object, R extends RefType>(
+  return function <P extends object, R extends RefType> (
     Component: typeof Block<P, R>,
   ) {
     return class extends Component {

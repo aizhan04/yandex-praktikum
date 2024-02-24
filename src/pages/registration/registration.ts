@@ -47,18 +47,17 @@ export class RegistrationPage extends Block<IProps, TRef> {
         // eslint-disable-next-line @typescript-eslint/naming-convention,camelcase
         const repeat_password = this.refs.repeat_password.value();
         if (
-          !email ||
-          !login ||
+          !email
+          || !login
           // eslint-disable-next-line camelcase
-          !first_name ||
+          || !first_name
           // eslint-disable-next-line camelcase
-          !second_name ||
-          !phone ||
-          !password ||
+          || !second_name
+          || !phone
+          || !password
           // eslint-disable-next-line camelcase
-          !repeat_password
-        )
-          return;
+          || !repeat_password
+        ) return;
 
         try {
           await signup({

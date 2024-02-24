@@ -50,4 +50,6 @@ const searchUsers = async (query: string) => {
   return response;
 };
 
-export { changeProfile, changeAvatar, changePassword, searchUsers };
+export {
+  changeProfile, changeAvatar, changePassword, searchUsers,
+};

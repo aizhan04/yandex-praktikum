@@ -4,7 +4,8 @@ import checker from "vite-plugin-checker";
 
 export default defineConfig({
   plugins: [
-    //@ts-ignore
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     handlebars(),
     checker({
       typescript: true,

@@ -53,16 +53,15 @@ export class EditProfilePage extends Block<IProps, TRef> {
         const phone = this.refs.phone.value();
         if (
           // eslint-disable-next-line camelcase
-          !first_name ||
+          !first_name
           // eslint-disable-next-line camelcase
-          !second_name ||
+          || !second_name
           // eslint-disable-next-line camelcase
-          !display_name ||
-          !login ||
-          !email ||
-          !phone
-        )
-          return;
+          || !display_name
+          || !login
+          || !email
+          || !phone
+        ) return;
 
         try {
           await changeProfile({

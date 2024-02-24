@@ -44,4 +44,6 @@ const logout = async () => {
   router.go(PAGES.LOGIN);
 };
 
-export { getUser, signin, signup, logout };
+export {
+  getUser, signin, signup, logout,
+};

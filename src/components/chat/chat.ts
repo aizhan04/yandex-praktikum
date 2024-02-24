@@ -57,13 +57,11 @@ export class Chat extends Block<IProps, TRef> {
         };
         return result;
       })(),
-      handleChatOptionsToggle: () =>
-        window.store.set({
-          isOpenDialogChatOptions: !this.props.isOpenDialogChatOptions,
-        }),
+      handleChatOptionsToggle: () => window.store.set({
+        isOpenDialogChatOptions: !this.props.isOpenDialogChatOptions,
+      }),
       handleAddMember: () => window.store.set({ isOpenDialogUsers: true }),
-      handleDeleteMember: () =>
-        window.store.set({ isOpenDialogDeleteUsers: true }),
+      handleDeleteMember: () => window.store.set({ isOpenDialogDeleteUsers: true }),
       addUserToChat: async (event) => {
         event.preventDefault();
         try {
@@ -112,11 +110,10 @@ export class Chat extends Block<IProps, TRef> {
           this.refs.dialogAddUsers.setProps(error.message);
         }
       },
-      onClose: () =>
-        window.store.set({
-          isOpenDialogUsers: false,
-          isOpenDialogDeleteUsers: false,
-        }),
+      onClose: () => window.store.set({
+        isOpenDialogUsers: false,
+        isOpenDialogDeleteUsers: false,
+      }),
       findUsers: debounce(async () => {
         const userName = this.refs.dialogAddUsers.getUserName();
         if (!userName) {
