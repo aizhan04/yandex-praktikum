@@ -9,7 +9,7 @@ enum USERS {
   BASE = "/user",
   PROFILE = "/profile",
   PASSWORD = "/password",
-  AVATAR = `${USERS.PROFILE}/avatar`,
+  AVATAR = "/profile/avatar",
   SEARCH = "/search",
 }
 

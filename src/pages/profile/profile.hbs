@@ -2,7 +2,7 @@
    {{{ Back onClick=handleBackClick }}}
     <form class="profile__content">
         <div>
-            {{{ Avatar }}}
+            {{{ Avatar img= user.avatar }}}
         </div>
         <div class="profile__content-input">
             {{{
@@ -11,7 +11,7 @@
                     label="Email"
                     type="email"
                     env="profile"
-                    placeholder="test@yandex.ru"
+                    placeholder=user.email
                     ref="email"
                     disabled="true"
             }}}
@@ -22,7 +22,7 @@
                     label="Login"
                     type="text"
                     env="profile"
-                    placeholder="ivanivanov"
+                    placeholder=user.login
                     disabled="true"
             }}}
 
@@ -32,7 +32,7 @@
                     label="First Name"
                     type="text"
                     env="profile"
-                    placeholder="Ivan"
+                    placeholder=user.firstName
                     disabled="true"
             }}}
 
@@ -42,7 +42,7 @@
                     label="Second Name"
                     type="text"
                     env="profile"
-                    placeholder="Ivanov"
+                    placeholder=user.secondName
                     disabled="true"
             }}}
 
@@ -52,7 +52,7 @@
                     label="Display Name"
                     type="text"
                     env="profile"
-                    placeholder="Ivan"
+                    placeholder=user.displayName
                     disabled="true"
             }}}
 
@@ -62,23 +62,17 @@
                     label="Phone Number"
                     type="text"
                     env="profile"
-                    placeholder="+7(909)9673030"
+                    placeholder=user.phone
                     disabled="true"
             }}}
         </div>
         <div class="profile__content-button">
-<!--            <button class="profile__content-button__main">-->
-<!--                Изменить данные-->
-<!--            </button>-->
             {{{
             Button
                     text="Изменить данные"
                     env="profile"
                     onClick=handleChangeProfile
             }}}
-<!--            <button class="profile__content-button__main">-->
-<!--                Изменить пароль-->
-<!--            </button>-->
 
             {{{
             Button
@@ -86,9 +80,7 @@
                     env="profile"
                     onClick=handleChangePassword
             }}}
-<!--            <button class="profile__content-button__delete">-->
-<!--                Выйти-->
-<!--            </button>-->
+
             {{{
             Button
                     text="Выйти"

@@ -31,10 +31,6 @@ export class Avatar extends Block<IProps, TRef> {
             formData.append("avatar", file);
             try {
               await changeAvatar(formData);
-              this.refs.errorText.setProps({ error: undefined });
-              this.refs.successText.setProps({
-                success: "Avatar has been changed successfully",
-              });
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
             } catch (error: any) {
               this.refs.successText.setProps({ success: undefined });

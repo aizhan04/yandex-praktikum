@@ -2,7 +2,7 @@
     {{{ Back onClick=handleBackClick }}}
     <form class="profile__content">
         <div>
-            {{{ Avatar }}}
+            {{{ Avatar img=user.avatar }}}
         </div>
         <div class="profile__content-input">
             {{{
@@ -11,8 +11,8 @@
                     label="Email"
                     type="email"
                     env="profile"
-                    placeholder="test@yandex.ru"
-                    value="test@yandex.ru"
+                    placeholder=user.email
+                    value=user.email
                     ref="email"
                     validate=validate.email
             }}}
@@ -23,8 +23,8 @@
                     label="Login"
                     type="text"
                     env="profile"
-                    placeholder="ivanivanov"
-                    value="ivanivanov"
+                    placeholder=user.login
+                    value=user.login
                     ref="login"
                     validate=validate.login
             }}}
@@ -35,9 +35,9 @@
                     label="First Name"
                     type="text"
                     env="profile"
-                    placeholder="Ivan"
+                    placeholder=user.firstName
                     ref="first_name"
-                    value="Ivan"
+                    value=user.firstName
                     validate=validate.first_name
             }}}
 
@@ -47,9 +47,9 @@
                     label="Second Name"
                     type="text"
                     env="profile"
-                    placeholder="Ivanov"
+                    placeholder=user.secondName
                     ref="second_name"
-                    value="Ivanov"
+                    value=user.secondName
                     validate=validate.second_name
             }}}
 
@@ -59,9 +59,9 @@
                     label="Display Name"
                     type="text"
                     env="profile"
-                    placeholder="Ivan"
+                    placeholder=user.displayName
                     ref="display_name"
-                    value="Ivan"
+                    value=user.displayName
                     validate=validate.display_name
             }}}
 
@@ -71,9 +71,9 @@
                     label="Phone Number"
                     type="text"
                     env="profile"
-                    placeholder="+7(909)9673030"
+                    placeholder=user.phone
                     ref="phone"
-                    value="+7(909)9673030"
+                    value=user.phone
                     validate=validate.phone
             }}}
         </div>
