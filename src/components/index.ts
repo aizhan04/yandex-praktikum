@@ -1,8 +1,8 @@
 export { Button } from "./button/button";
 export { Input } from "./input/input";
-export { FormAuth } from "./form-auth";
 export { Back } from "./back/back";
 export { Error } from "./error/error";
+export { FormAuth } from "./form-auth/form";
 export { ErrorText } from "./errorText/error-text";
 export { ChatItem } from "./chatItem/chatItem";
 export { ChatList } from "./chatList/chatList";
@@ -10,10 +10,20 @@ export { Chat } from "./chat/chat";
 export { Search } from "./search/search";
 export { Avatar } from "./avatar/avatar";
 export { InputField } from "./inputField/inputField";
+export { SuccessText } from "./successText/success-text";
+export { Dialog } from "./dialog/dialog";
+export { Anchor } from "./anchor";
+export { default as DialogCreateChat } from "./dialog-create-chat";
+export { default as DialogAddUsers } from "./dialog-add-users";
+export { default as DialogDeleteUsers } from "./dialog-delete-users";
+export { default as UsersList } from "./users-list";
+export { ChatOptions } from "./chat-options";
+export { AddMember } from "./chat-options/add-member";
+export { DeleteMember } from "./chat-options/delete-member/delete-member";
 
 // icons
 export { ArrowRight } from "./icons/arrow";
-export { Dots } from "./icons/dots";
+export { OptionsIcon } from "./icons/options";
 export { ReadMessage } from "./icons/read";
 export { AttachIcon } from "./icons/attach";
 export { SendIcon } from "./icons/send";

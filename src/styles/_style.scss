@@ -7,6 +7,9 @@
 @import 'src/components/search/search';
 @import 'src/components/chat/chat';
 @import '/src/components/inputField/input-field';
+@import '/src/components/successText/success';
+@import '/src/components/dialog-create-chat/dialog-create-chat';
+@import '/src/components/dialog/modal';
 @import 'src/components/avatar/avatar';
 @import '/src/pages/login/login';
 @import '/src/pages/registration/registration';
@@ -17,6 +20,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    scroll-behavior: smooth !important;
 }
 
 :root {

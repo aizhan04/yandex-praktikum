@@ -3,6 +3,7 @@
     <!--    Левая сторона -->
     <div class="left">
         <div class="list-container__head">
+            {{{ DialogCreateChat onSave=onSave onClose=closeDialog ref="createChat"}}}
             <div class="list-container__profile-block">
                 {{{
                     Button
@@ -15,14 +16,31 @@
             <div>
                 {{{ Search }}}
             </div>
+            <div class="list-container__button">
+                {{{
+                Button
+                        primary="true"
+                        text="Создать чат"
+                        type="button"
+                        onClick=openDialog
+                }}}
+            </div>
         </div>
         <!--Список чатов-->
-        <nav>
-            {{#ChatList chats=chats handleChatClick=handleChatClick}}{{/ChatList}}
-        </nav>
+        {{#if chats}}
+            <nav>
+                {{#ChatList chats=chats}}{{/ChatList}}
+            </nav>
+        {{else}}
+            <h2 class="list-container__empty list-container__dummy">No chats</h2>
+        {{/if}}
     </div>
     <!--Правая сторона-->
-    <div class="right">
-        {{{ Chat }}}
-    </div>
+    {{#if activeChat}}
+        {{{ Chat activeChat=activeChat }}}
+    {{else}}
+        <section class="list-container__main">
+            <h1 class="list-container__dummy">Choose a chat to send a message</h1>
+        </section>
+    {{/if}}
 </main>

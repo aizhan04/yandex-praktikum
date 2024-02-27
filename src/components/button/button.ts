@@ -1,5 +1,6 @@
 import Block, { Events } from "../../core/Block";
 import button from "./button.hbs?raw";
+import buttonChat from "./button-chat.hbs?raw";
 
 interface Props {
   text: string;
@@ -20,6 +21,10 @@ export class Button extends Block<Props> {
   }
 
   protected render(): string {
+    if (this.props.env === "chat") {
+      return buttonChat;
+    }
+
     return button;
   }
 }

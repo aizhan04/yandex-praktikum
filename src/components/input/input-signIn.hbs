@@ -1,8 +1,9 @@
 <input
-                class="input__element"
-                placeholder=""
-                type="{{type}}"
-                name="{{name}}"
-                id="{{name}}"
-                ref="input"
+        class="input__element"
+        type={{ type }}
+        id={{ name }}
+        placeholder=""
+        name={{ name }}
+        ref="input"
+    {{#if hidden}} hidden {{/if}}
 />

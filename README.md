@@ -16,12 +16,6 @@
 - Поиск
 - Страница ошибки 404 и 500
 
-## Что было добавленое во втором спринте
-- Был добавлен общий класс Block
-- Внедрен ESLint, Stylelint
-- Все partials от handlebars были переделаны в компоненты
-- Добавлена валидация форм на blur и на submit кнопки (правила разные)
-
 ## Макет
 
 https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?node-id=12%3A51&mode=dev

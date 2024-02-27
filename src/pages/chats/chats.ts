@@ -1,113 +1,61 @@
 import Block from "../../core/Block";
-import { PAGES, navigate } from "../../core/navigate";
 import template from "./chats.hbs?raw";
-// @ts-ignore
-import userAvatar from "../../assets/user.svg";
-import * as validators from "../../utils/validate";
-import { InputField } from "../../components";
+import { PAGES, router } from "../../core/Router";
+import { DialogCreateChat } from "../../components/dialog-create-chat";
+import { createChat } from "../../services/chat";
+import { connect } from "../../utils/connect";
+import { initChatPage } from "../../services/initApp";
+import { ActiveChat, Chat } from "../../type";
 
-interface Props {}
+interface IProps {
+  chats: Chat[] | [];
+  activeChat: ActiveChat;
+  handleProfileClick: (event: Event) => void;
+  handleChatClick: (event: Event) => void;
+  openDialog: () => void;
+  closeDialog: () => void;
+  onSave: () => void;
+}
 
-type TRef = {
-  message: InputField;
+type TRefs = {
+  createChat: DialogCreateChat;
 };
 
-export class ChatsPage extends Block<Props, TRef> {
-  constructor() {
+export class ChatsPage extends Block<IProps, TRefs> {
+  constructor(props: IProps) {
     super({
-      validate: {
-        message: validators.message,
-      },
-      chats: [
-        {
-          name: "Вадим",
-          message: "Здравствуйте",
-          time: "11:00",
-          unreadCount: 1,
-          userAvatar,
-        },
-        {
-          name: "Андрей",
-          message: "Здравствуйте",
-          time: "12:00",
-          unreadCount: 2,
-          userAvatar,
-        },
-        {
-          name: "Максим",
-          message: "Привет",
-          time: "13:00",
-          isActiveChat: true,
-          userAvatar,
-        },
-        {
-          name: "Игорь",
-          message: "Здравствуйте",
-          time: "11:00",
-          unreadCount: 1,
-          userAvatar,
-        },
-        {
-          name: "Илья",
-          message: "Здравствуйте",
-          time: "12:00",
-          unreadCount: 2,
-          userAvatar,
-        },
-        {
-          name: "Илья",
-          message: "Здравствуйте",
-          time: "12:00",
-          unreadCount: 2,
-          userAvatar,
-        },
-        {
-          name: "Илья",
-          message: "Здравствуйте",
-          time: "12:00",
-          unreadCount: 2,
-          userAvatar,
-        },
-        {
-          name: "Илья",
-          message: "Здравствуйте",
-          time: "12:00",
-          unreadCount: 2,
-          userAvatar,
-        },
-        {
-          name: "Илья",
-          message: "Здравствуйте",
-          time: "12:00",
-          unreadCount: 2,
-          userAvatar,
-        },
-        {
-          name: "Илья",
-          message: "Здравствуйте",
-          time: "12:00",
-          unreadCount: 2,
-          userAvatar,
-        },
-      ],
+      ...props,
       handleProfileClick: (event: Event) => {
         event.preventDefault();
-        navigate(PAGES.PROFILE_PAGE);
+        router.go(PAGES.PROFILE);
       },
-      handleChatClick: () => {
-        navigate(PAGES.CHATS);
-      },
-      handleSendClick: () => {
-        const message = this.refs.message.value();
-        if (!message) return;
-        console.log({
-          message,
-        });
+      openDialog: () => window.store.set({ isOpenDialogChat: true }),
+      closeDialog: () => window.store.set({ isOpenDialogChat: false }),
+      onSave: async () => {
+        const chatTitle = this.refs.createChat.getChatTitle();
+        if (!chatTitle) {
+          this.refs.createChat.setError("Chat title should not be empty");
+          return;
+        }
+
+        try {
+          await createChat(chatTitle);
+          console.log("sdfkjh");
+          window.store.set({ isOpenDialogChat: false });
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } catch (error: any) {
+          this.refs.createChat.setError(error.message);
+        }
       },
     });
+    initChatPage();
   }
 
   protected render(): string {
     return template;
   }
 }
+
+export default connect(({ chats, activeChat }) => ({ chats, activeChat }))(
+  ChatsPage,
+);

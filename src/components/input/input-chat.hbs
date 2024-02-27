@@ -1,7 +1,9 @@
 <input
         class="chat-bottom__input"
+        type={{ type }}
+        name={{ name }}
+        placeholder="{{ placeholder }}"
         ref="input"
-        type="{{type}}"
-        placeholder="{{placeholder}}"
+    {{#if hidden}} hidden {{/if}}
         name="{{name}}"
 >

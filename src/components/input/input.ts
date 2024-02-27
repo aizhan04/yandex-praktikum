@@ -3,24 +3,44 @@ import templateInputProfile from "./profile-input.hbs?raw";
 import templateInputSignIn from "./input-signIn.hbs?raw";
 import templateInputChat from "./input-chat.hbs?raw";
 
-interface Props {
-  type: "email" | "password" | "text";
+interface IProps {
+  type: "email" | "password" | "text" | "file";
   name: string;
-  label: string;
-  env: "registration" | "profile" | "chat";
+  env: "registration" | "profile" | "chat" | "search";
+  hidden?: boolean;
   placeholder?: string;
-  onBlur: () => void;
+  value?: string;
+  onBlur?: (e: Event) => void;
+  onChange?: (e: Event) => void;
+  onInput?: (e: Event) => void;
   events: Events;
 }
 
-export class Input extends Block<Props> {
-  constructor(props: Props) {
+export class Input extends Block<IProps> {
+  constructor(props: IProps) {
     super({
       ...props,
-      events: {
-        blur: props.onBlur,
-      },
     });
+  }
+
+  protected init() {
+    if (this.props.onBlur) {
+      this.props.events = {
+        blur: this.props.onBlur,
+      };
+    }
+
+    if (this.props.onChange) {
+      this.props.events = {
+        change: this.props.onChange,
+      };
+    }
+
+    if (this.props.onInput) {
+      this.props.events = {
+        input: this.props.onInput,
+      };
+    }
   }
 
   protected render(): string {

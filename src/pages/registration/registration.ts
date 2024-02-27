@@ -1,8 +1,9 @@
-import { InputField } from "../../components";
+import { InputField, ErrorText } from "../../components";
 import Block from "../../core/Block";
-import { PAGES, navigate } from "../../core/navigate";
+import { PAGES, router } from "../../core/Router";
 import template from "./registration.hbs?raw";
 import * as validators from "../../utils/validate";
+import { signup } from "../../services/auth";
 
 interface IProps {}
 
@@ -14,6 +15,7 @@ type TRef = {
   phone: InputField;
   password: InputField;
   repeat_password: InputField;
+  errorText: ErrorText;
 };
 
 export class RegistrationPage extends Block<IProps, TRef> {
@@ -30,9 +32,9 @@ export class RegistrationPage extends Block<IProps, TRef> {
       },
       handleLogin: (event: Event) => {
         event.preventDefault();
-        navigate(PAGES.LOGIN);
+        router.go(PAGES.LOGIN);
       },
-      handleRegister: (event: Event) => {
+      handleRegister: async (event: Event) => {
         event.preventDefault();
         const email = this.refs.email.value();
         const login = this.refs.login.value();
@@ -45,31 +47,33 @@ export class RegistrationPage extends Block<IProps, TRef> {
         // eslint-disable-next-line @typescript-eslint/naming-convention,camelcase
         const repeat_password = this.refs.repeat_password.value();
         if (
-          !email ||
-          !login ||
+          !email
+          || !login
           // eslint-disable-next-line camelcase
-          !first_name ||
+          || !first_name
           // eslint-disable-next-line camelcase
-          !second_name ||
-          !phone ||
-          !password ||
+          || !second_name
+          || !phone
+          || !password
           // eslint-disable-next-line camelcase
-          !repeat_password
-        )
-          return;
-        console.log({
-          email,
-          login,
-          // eslint-disable-next-line camelcase
-          first_name,
-          // eslint-disable-next-line camelcase
-          second_name,
-          phone,
-          password,
-          // eslint-disable-next-line camelcase
-          repeat_password,
-        });
-        navigate(PAGES.CHATS);
+          || !repeat_password
+        ) return;
+
+        try {
+          await signup({
+            email,
+            login,
+            // eslint-disable-next-line camelcase
+            first_name,
+            // eslint-disable-next-line camelcase
+            second_name,
+            phone,
+            password,
+          });
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } catch (error: any) {
+          this.refs.errorText.setProps({ error: error.message });
+        }
       },
     });
   }

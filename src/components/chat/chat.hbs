@@ -1,94 +1,63 @@
-<!--Правая сторона-->
-<main class="chat">
-    <div class="chat-header">
-        <div class="chat-header__user-info">
-            <p>image</p>
-            <p class="chat-header__user-name">Vadim</p>
+<section class="chat">
+    {{{
+    DialogAddUsers
+            onClose=onClose
+            addUserToChat=addUserToChat
+            ref="dialogAddUsers"
+            onInput=findUsers
+    }}}
+
+    {{{
+    DialogDeleteUsers
+            onClose=onClose
+            deleteUsersFromChat=deleteUsersFromChat
+            ref="dialogDeleteUsers"
+    }}}
+
+    <header class="chat-header">
+            {{{ ChatOptions handleAddMember=handleAddMember handleDeleteMember=handleDeleteMember }}}
+
+        {{#if companion}}
+            <div class="chat-header__details">
+                <div class="chat-header__avatar">
+                    <img
+                            src={{ companion.avatar }}
+                            alt="User Avatar"
+                            width="34px"
+                            height="34px"
+                    >
+                </div>
+                <h3 class="chat-header__name">{{ companion.displayName }}</h3>
+            </div>
+        {{else}}
+            <h3 class="chat-header__title">{{ activeChat.title }}</h3>
+        {{/if}}
+
+        {{{ OptionsIcon onClick=handleChatOptionsToggle }}}
+    </header>
+
+
+    <div class="chat-main">
+        {{!-- <time class="chat-main__date" datetime="{{ this.time }}">{{ this.time }}</time>  --}}
+        <div class="chat-main__messages">
+            {{#each activeChat.messages}}
+                <div class="chat-main__message {{#if isMine}} chat-main__message_mine {{/if}}">
+                    <p>{{ this.content }}</p>
+                    <div class="chat-main__message-details">
+                        <time datetime="{{ this.time }}">{{ this.time }}</time>
+                    </div>
+                </div>
+            {{/each}}
         </div>
-        <div class="chat-header__details">
-            {{> Dots}}
-        </div>
+        {{{ Anchor ref="anchorRef" }}}
     </div>
 
-    <!--    Сама переписка-->
-    <div class="test">
-        <div class="chat-content">
-            <div class="chat-content__income-message">
-                <p>Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент
-                    попросила
-                    Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с
-                    моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так
-                    как
-                    астронавты с собой забрали только кассеты с пленкой.</p>
-                <time datetime="11:56">11:56</time>
-            </div>
 
-            <div class="chat-content__my-message">
-                <p>
-                    Круто!
-                </p>
-                <div class="chat-content__read-message">
-                    {{> ReadMessage}}
-                    <time datetime="11:56">11:56</time>
-                </div>
-            </div>
+    <footer class="chat-footer">
+        <button class="chat__button" type="button">
+            {{> AttachIcon }}
+        </button>
 
-            <div class="chat-content__income-message">
-                <p>Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент
-                    попросила
-                    Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с
-                    моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так
-                    как
-                    астронавты с собой забрали только кассеты с пленкой.</p>
-                <time datetime="11:56">11:56</time>
-            </div>
-
-            <div class="chat-content__my-message">
-                <p>
-                    Круто!
-                </p>
-                <div class="chat-content__read-message">
-                    {{> ReadMessage}}
-                    <time datetime="11:56">11:56</time>
-                </div>
-            </div>
-
-            <div class="chat-content__income-message">
-                <p>Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент
-                    попросила
-                    Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с
-                    моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так
-                    как
-                    астронавты с собой забрали только кассеты с пленкой.</p>
-                <time datetime="11:56">11:56</time>
-            </div>
-
-            <div class="chat-content__my-message">
-                <p>
-                    Круто!
-                </p>
-                <div class="chat-content__read-message">
-                    {{> ReadMessage}}
-                    <time datetime="11:56">11:56</time>
-                </div>
-            </div>
-
-            <div class="chat-content__income-message">
-                <p>Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент
-                    попросила
-                    Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с
-                    моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так
-                    как
-                    астронавты с собой забрали только кассеты с пленкой.</p>
-                <time datetime="11:56">11:56</time>
-            </div>
-        </div>
-    </div>
-
-    <!--    Футер переписки-->
-    <div class="chat-bottom">
-        {{> AttachIcon }}
-<!--        //тут был инпут чат-->
         {{{
         InputField
                 type="text"
@@ -99,6 +68,12 @@
                 placeholder="Message"
                 validate=validate.message
         }}}
-        {{> SendIcon}}
-    </div>
-</main>
+
+           {{{
+           Button
+                   type="button"
+                   env='chat'
+                   onClick=handleSendClick
+           }}}
+    </footer>
+</section>

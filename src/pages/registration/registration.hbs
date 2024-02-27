@@ -1,5 +1,5 @@
 <main class="container">
-    {{#> FormAuth}}
+    <form class="form">
         <h1>Регистрация</h1>
         {{{
         InputField
@@ -84,6 +84,7 @@
                 type="link"
                 onClick=handleLogin
         }}}
-    {{/FormAuth}}
+        {{{ ErrorText error=error ref="errorText"}}}
+    </form>
 </main>
 

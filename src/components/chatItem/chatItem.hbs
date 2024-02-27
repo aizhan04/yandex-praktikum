@@ -1,28 +1,40 @@
-<li class="
-      list-item
-    {{#if isActiveChat}} list-item__active {{/ if}}
-">
-    <div class="list-item__image">
-        <img src={{userAvatar}}
-             alt="Аватар"
-             width="47px"
-             height="47px">
-    </div>
-    <div class="list-item__content">
-        <div class="list-item__head">
-            <h4>{{name}}</h4>
-            <p class="list-item__time">{{time}}</p>
+<li class="chats-card {{#if active}} chats-card_active {{/if}}">
+    {{#if avatar}}
+        <div class="chats-card__image">
+            <img
+                    src="{{ avatar }}"
+                    alt="Chat card image"
+                    width="47px"
+                    height="47px"
+            />
         </div>
-        <div class="list-item__message">
-            {{#if sendMessage}}
-                <p><span>Вы: </span>{{message}}</p>
-            {{else }}
-                <p>{{message}}</p>
-            {{/if}}
-            {{#if unreadCount}}
-                <div class="list-item__unread-count">{{unreadCount}}</div>
-            {{/if}}
-        </div>
-    </div>
-</li>
+    {{/if}}
 
+    {{#if lastMessage}}
+        <div class="chats-card__info">
+            <div class="chats-card__title">
+                <h2>{{ title }}</h2>
+            </div>
+            <h3 class="chats-card__name">{{ lastMessage.user.firstName }}</h3>
+            <h4 class="chats-card__message">{{ lastMessage.content }}</h4>
+        </div>
+
+        <div class="chats-card__additional">
+            <time
+                    class="chats-card__time"
+                    datetime={{ lastMessageTime }}
+            >
+                {{ lastMessageTime }}
+            </time>
+            {{#if unreadCount}}
+                <div class="chats-card__unread">
+                    <span>{{ unreadCount }}</span>
+                </div>
+            {{/if}}
+        </div>
+    {{else}}
+        <div class="chats-card__title">
+            <h2>{{ title }}</h2>
+        </div>
+    {{/if}}
+</li>
